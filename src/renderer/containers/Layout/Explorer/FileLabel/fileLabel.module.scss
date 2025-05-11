@@ -1,0 +1,24 @@
+@use '@renderer/styles/common';
+
+.container {
+  background-color: common.$color-neutral-800;
+  padding: 2px 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  cursor: pointer;
+
+  .labelContainer {
+    display: flex;
+    align-items: center;
+
+    .label {
+      font-size: 13px;
+      color: rgba(common.$color-white, 0.5);
+      background-color: common.$color-neutral-800;
+      user-select: none;
+    }
+  }
+}

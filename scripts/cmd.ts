@@ -1,8 +1,5 @@
-import { CommandRunner } from "./bin/ICommand";
-import ConvertColorsToScssCommand from "./commands/colors/ConvertColorsToScssCommand";
+import ConvertColorsToScssCommand from "./commands/ConvertColorsToScssCommand";
+import UnderlineStringCommand from "./commands/UnderlineStringCommand";
+import { commandRegistry } from "./bin/ICommand";
 
-const commands = new CommandRunner();
-
-commands.registerCommand([ConvertColorsToScssCommand]);
-
-commands.run();
+commandRegistry([ConvertColorsToScssCommand, UnderlineStringCommand]);

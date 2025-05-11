@@ -1,23 +1,15 @@
 import { Command as BaseCommand } from "commander";
 
-export interface ICommand<T = any> {
-  execute(): void;
-  undo?(): void;
-  configure?(command: BaseCommand): void;
-  name: string;
-  description?: string;
-  args?: T;
+export type MochaCommandConfig = BaseCommand;
+
+export abstract class MochaCommand {
+  configure?(config: MochaCommandConfig): void;
+  abstract execute(...args: any[]): void;
 }
 
-export abstract class Command<T = any> implements ICommand<T> {
-  abstract execute(): void;
-  abstract undo?(): void;
-  abstract configure?(command: BaseCommand): void;
-  abstract name: string;
-  abstract args?: T;
-}
+export type MochaCommandClass = new () => MochaCommand;
 
-const commandsMap = new Map<string, Command>();
+const commandsMap = new Map<string, MochaCommandClass>();
 
 export class CommandRunner {
   private program = new BaseCommand();
@@ -27,19 +19,19 @@ export class CommandRunner {
   }
 
   registerAll() {
-    for (const command of commandsMap.values()) {
-      const subCommand = this.program.command(command.name);
-      command.configure?.(subCommand);
-      subCommand.action(() => {
-        command.execute();
+    for (const [name, CommandItem] of commandsMap.entries()) {
+      const commander = this.program.command(name);
+      const commandItem = new CommandItem();
+      commandItem.configure?.(commander);
+      commander.action((...args: any[]) => {
+        commandItem.execute(...args);
       });
     }
   }
 
-  registerCommand(commands: (new () => Command)[]) {
+  registerCommand(commands: (new () => MochaCommand)[]) {
     commands.forEach((CommandItem) => {
-      const command = new CommandItem();
-      commandsMap.set(command.name, command);
+      commandsMap.set(CommandItem.name, CommandItem);
     });
   }
 
@@ -48,3 +40,9 @@ export class CommandRunner {
     this.program.parse(argv);
   }
 }
+
+export const commandRegistry = (args: MochaCommandClass[]) => {
+  const commands = new CommandRunner();
+  commands.registerCommand([...args]);
+  commands.run();
+};

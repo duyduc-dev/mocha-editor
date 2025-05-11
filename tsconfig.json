@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "strict": true,
     "target": "ESNext",
     "module": "commonjs",
     "jsx": "react-jsx",
@@ -12,8 +13,12 @@
     "outDir": "dist",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports" : true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@renderer/*": ["./src/renderer/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@preload/*": ["./src/preload/*"],
+      "@main/*": ["./src/main/*"],
     }
   },
   "exclude": ["node_modules/*"]

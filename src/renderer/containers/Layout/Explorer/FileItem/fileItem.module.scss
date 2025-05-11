@@ -1,0 +1,22 @@
+@use "@renderer/styles/common";
+
+.container {
+  margin-bottom: 6px;
+
+  .labelContainer {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+
+    .iconExpandPlaceholder {
+      width: 20px;
+    }
+
+    .label {
+      font-size: 13px;
+      color: rgba(common.$color-white, 0.8);
+      user-select: none;
+    }
+  }
+}

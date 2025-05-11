@@ -1,0 +1,28 @@
+@use '@renderer/styles/common';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: common.$var-header-height;
+
+  .layout {
+    flex: 1;
+    display: flex;
+    height: 100%;
+
+
+    .sidebar {
+      min-width: 48px;
+      width: 48px;
+    }
+
+    .sideBarContent {
+      border-right: 2px solid common.$color-neutral-800;
+    }
+
+    .content {
+      flex: 1;
+    }
+  }
+}

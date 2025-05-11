@@ -1,0 +1,27 @@
+@use '@renderer/styles/common' as common;
+
+.container {
+  width: 100%;
+
+  .item {
+    cursor: pointer;
+    width: 100%;
+    height: common.$var-sidebar-width;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+    transition: all 0.2s ease-in-out;
+    border-left-width: 2px;
+    border-left-style: solid;
+    border-color: transparent;
+
+    &:hover {
+      opacity: 1;
+    }
+    &.active {
+      opacity: 1;
+      border-color: common.$color-white;
+    }
+  }
+}

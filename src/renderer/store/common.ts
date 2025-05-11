@@ -1,0 +1,74 @@
+import {
+  ThunkAction,
+  ThunkDispatch,
+  UnknownAction,
+  createSelector,
+  createAsyncThunk,
+  CreateAsyncThunkFunction,
+  AsyncThunkPayloadCreator,
+  AsyncThunkOptions,
+} from '@reduxjs/toolkit';
+import { IAppState } from '@renderer/store/index';
+import { IAppServices } from 'src/renderer/services';
+import { EqualityFn, useDispatch, useSelector } from 'react-redux';
+import { Combiner, Selector } from 'reselect';
+
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  IAppState,
+  IAppServices,
+  UnknownAction
+>;
+
+type AppDispatch = ThunkDispatch<IAppState, IAppServices, UnknownAction>;
+
+export type ActionStatus = 'Init' | 'Pending' | 'Success' | 'Error';
+
+export interface IBaseState {
+  status: ActionStatus;
+  error?: IError;
+}
+
+export interface IError {
+  type: string;
+  title?: string;
+  message?: string;
+  [key: string]: any;
+}
+
+type Undefined<T> = { [key in keyof T]?: undefined };
+
+export type ActionState<TInput = object, TResult = object, TError = IError> =
+  | ({ status: 'Init' } & Undefined<TInput> &
+      Undefined<TResult> & { error?: undefined })
+  | ({ status: 'Pending' } & TInput &
+      Undefined<TResult> & { error?: undefined })
+  | ({ status: 'Success' } & TInput & TResult & { error?: undefined })
+  | ({ status: 'Error' } & TInput & Undefined<TResult> & { error: TError });
+
+export type SeamlessActionState<
+  TInput = object,
+  TResult = object,
+  TError = IError,
+> =
+  | ({ status: 'Init' } & Undefined<TInput> &
+      Undefined<TResult> & { error?: undefined })
+  | ({ status: 'Pending' } & TInput & Partial<TResult> & { error?: undefined })
+  | ({ status: 'Success' } & TInput & TResult & { error?: undefined })
+  | ({ status: 'Error' } & TInput & Undefined<TResult> & { error: TError });
+
+export type ThunkConfig = {
+  state: IAppState;
+  extra: IAppServices;
+  dispatch: AppDispatch;
+};
+export const createAppAsyncThunk = <R = unknown, A = unknown>(
+  typePrefix: string,
+  payloadCreator: AsyncThunkPayloadCreator<R, A, ThunkConfig>,
+  options?: AsyncThunkOptions<A, ThunkConfig>,
+) => createAsyncThunk(typePrefix, payloadCreator, options);
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector = <R = IAppState>(
+  state: (state: IAppState) => R = (s) => s as unknown as R,
+  equalityFnOrOptions?: EqualityFn<R>,
+) => useSelector<IAppState, R>(state, equalityFnOrOptions);

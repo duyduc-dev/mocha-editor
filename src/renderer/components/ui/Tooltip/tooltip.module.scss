@@ -1,0 +1,10 @@
+@use '@renderer/styles/common';
+
+.tooltip {
+  z-index: 50;
+  white-space: normal;
+  border-radius: 8px;
+  background-color: common.$color-gray-900;
+  font-weight: 400;
+  color: common.$color-white;
+}
