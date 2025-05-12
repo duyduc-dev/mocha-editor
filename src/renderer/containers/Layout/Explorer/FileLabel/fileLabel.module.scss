@@ -1,7 +1,7 @@
 @use '@renderer/styles/common';
 
 .container {
-  background-color: common.$color-neutral-800;
+  background-color: rgba(common.$color-neutral-800, 0.5);
   padding: 2px 8px;
   position: relative;
   display: flex;
@@ -17,7 +17,6 @@
     .label {
       font-size: 13px;
       color: rgba(common.$color-white, 0.5);
-      background-color: common.$color-neutral-800;
       user-select: none;
     }
   }

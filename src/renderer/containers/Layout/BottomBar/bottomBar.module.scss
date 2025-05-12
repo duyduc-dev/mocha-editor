@@ -1,0 +1,6 @@
+@use "@renderer/styles/common";
+
+.container {
+  min-height: common.$var-bottom-bar-height !important;
+  border-top: 1px solid rgba(common.$color-neutral-800, 0.5);
+}

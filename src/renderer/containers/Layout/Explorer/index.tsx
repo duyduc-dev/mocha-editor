@@ -19,6 +19,7 @@ const Explorer = () => {
         renderLabel={({ item, isExpand }) => (
           <FileLabel title={item.title} isExpand={isExpand} />
         )}
+        className={styles.list}
         renderContent={() => <FileExploreTree />}
       />
     </div>

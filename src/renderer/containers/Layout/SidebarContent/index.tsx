@@ -1,10 +1,15 @@
 import styles from './sidebarContent.module.scss';
-import Explorer from '@renderer/containers/Layout/Explorer';
+import { lazy, Suspense } from 'react';
+import Spinner from '@renderer/components/ui/Spinner';
+
+const Explorer = lazy(() => import('@renderer/containers/Layout/Explorer'));
 
 const SidebarContent = () => {
   return (
     <div className={styles.container}>
-      <Explorer />
+      <Suspense fallback={<Spinner />}>
+        <Explorer />
+      </Suspense>
     </div>
   );
 };

@@ -15,7 +15,6 @@ const FileTreeItem: FC<IFileTreeItem> = (props) => {
     <div className={styles.container} key={`${file.fullPath}-${file.name}`}>
       {file.isDirectory ? (
         <Collapse
-          lazyExpand={['']}
           keyExtractor={(item) => `${item.fullPath}-${item.name}`}
           data={[file]}
           renderLabel={({ item, isExpand }) => (

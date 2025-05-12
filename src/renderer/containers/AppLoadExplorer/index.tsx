@@ -6,7 +6,9 @@ const AppLoadExplorer = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(
-      fetchExplorerSystem('/Users/ducdang/workspace/electron/mocha-editor'),
+      fetchExplorerSystem(
+        '/Users/ducdang/workspace/nashtech/zenfolio/zf-site-editor-frontend',
+      ),
     );
   }, []);
 

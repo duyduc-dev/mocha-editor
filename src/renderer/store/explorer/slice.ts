@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IExplorerState } from '@renderer/store/explorer/models';
 import { fetchExplorerSystem } from '@renderer/store/explorer/thunk';
+import { sortDir } from '@renderer/utilities/files';
 
 const initialState: IExplorerState = {
   status: 'Init',
@@ -17,7 +18,7 @@ const explorerSlice = createSlice({
     });
     builder.addCase(fetchExplorerSystem.fulfilled, (state, action) => {
       state.status = 'Success';
-      state.fileSystem = [action.payload];
+      state.fileSystem = sortDir([action.payload]);
     });
     builder.addCase(fetchExplorerSystem.rejected, (state, action) => {
       state.status = 'Error';

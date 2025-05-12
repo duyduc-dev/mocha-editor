@@ -3,6 +3,10 @@
 .container {
   margin-bottom: 6px;
 
+  &.fileHide {
+    opacity: 0.5;
+  }
+
   .labelContainer {
     display: flex;
     align-items: center;
