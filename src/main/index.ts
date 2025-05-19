@@ -42,6 +42,8 @@ const createWindow = () => {
   mainWindow.on('ready-to-show', () => {
     mainWindow.show();
   });
+
+  return mainWindow;
 };
 
 app.on('ready', () => {
@@ -49,15 +51,15 @@ app.on('ready', () => {
     optimizer.watchWindowShortcuts(window);
   });
 
-  createWindow();
+  let mainWin = createWindow();
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
+      mainWin = createWindow();
     }
   });
 
-  registryHandlers();
+  registryHandlers(mainWin);
 });
 
 app.on('window-all-closed', () => {

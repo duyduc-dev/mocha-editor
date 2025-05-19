@@ -1,11 +1,16 @@
+import { BrowserWindow } from 'electron';
 interface IMochaEvent<Args extends any[] = any[]> {
   type: 'event';
-  run(event: Electron.IpcMainEvent, ...args: Args): void;
+  run(window: BrowserWindow, event: Electron.IpcMainEvent, ...args: Args): void;
 }
 
 interface IpcMainInvoke<Args extends any[] = any[]> {
   type?: 'handler';
-  run(event: Electron.IpcMainInvokeEvent, ...args: Args): void;
+  run(
+    window: BrowserWindow,
+    event: Electron.IpcMainInvokeEvent,
+    ...args: Args
+  ): void;
 }
 
 interface IMochaBase {

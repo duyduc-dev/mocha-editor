@@ -3,7 +3,6 @@
 .container {
   margin-bottom: 6px;
 
-
   &.fileHide {
     opacity: 0.5;
   }
@@ -20,6 +19,9 @@
 
     .iconWrapper {
       min-width: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .label {

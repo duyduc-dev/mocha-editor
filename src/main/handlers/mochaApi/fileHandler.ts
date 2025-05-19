@@ -9,7 +9,7 @@ import { MochaHandleKey } from '@shared/types/mochaHandleKey';
 export const getDirectoryTreeHandler: IMochaHandler = {
   type: 'handler',
   name: MochaHandleKey.GET_DIRECTORY_TREE,
-  run: async (_event, dirPath: string) => {
+  run: async (_, __, dirPath: string) => {
     return getDirectoryTree(dirPath);
   },
 };
@@ -17,7 +17,7 @@ export const getDirectoryTreeHandler: IMochaHandler = {
 export const getDirectoryTreeWithParentHandler: IMochaHandler = {
   type: 'handler',
   name: MochaHandleKey.GET_DIRECTORY_TREE_WITH_PARENT,
-  run: async (_event, dirPath: string) => {
+  run: async (_, __, dirPath: string) => {
     return getDirectoryTreeWithParent(dirPath);
   },
 };
@@ -25,5 +25,5 @@ export const getDirectoryTreeWithParentHandler: IMochaHandler = {
 export const openDialogHandler: IMochaHandler = {
   type: 'handler',
   name: MochaHandleKey.OPEN_DIALOG,
-  run: async (_event) => openDialog(),
+  run: async (window) => openDialog(window),
 };

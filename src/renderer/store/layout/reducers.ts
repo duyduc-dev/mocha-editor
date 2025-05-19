@@ -15,15 +15,18 @@ export const tabActionReducer = (
       return;
     case TabActionType.ADD: {
       const { id } = action.payload;
-      state.currentTab = id;
-      if (state.tabBars[id]) return;
+      if (state.tabBars[id]) {
+        state.currentTab = id;
+        return;
+      }
       state.tabBars = insertAfter(
         state.tabBars,
         state.currentTab,
         id,
         action.payload,
       );
-      break;
+      state.currentTab = id;
+      return;
     }
     case TabActionType.CLOSE: {
       const tabIdToClose = action.payload;

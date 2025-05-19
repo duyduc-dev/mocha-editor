@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { FileNode } from '@shared/types/files';
-import { dialog } from 'electron';
+import { BrowserWindow, dialog } from 'electron';
 import { BrowserWindowInstance } from '@main/utils/BrowserWindowInstance';
 
 export function getDirectoryTree(dirPath: string): FileNode[] {
@@ -32,8 +32,8 @@ export function getDirectoryTreeWithParent(dirPath: string): FileNode {
   };
 }
 
-export async function openDialog() {
-  const result = await dialog.showOpenDialog(BrowserWindowInstance(), {
+export async function openDialog(mainWindow: BrowserWindow) {
+  const result = await dialog.showOpenDialog(mainWindow, {
     properties: ['openFile', 'openDirectory'], // or just 'openDirectory'
   });
   if (result.canceled) return null;
