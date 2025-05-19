@@ -1,5 +1,17 @@
-@use "@renderer/styles/common";
+@use '@renderer/styles/common';
 
 .container {
-  margin-bottom: 16px;
+  height: 100%;
+}
+
+.contentContainer {
+  height: 100%;
+}
+
+.list {
+  height: 100%;
+
+  .item {
+    height: 100%;
+  }
 }

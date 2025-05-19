@@ -24,6 +24,9 @@ type Props<T> = {
   ref?: Ref<CollapseRef>;
   lazyExpand?: (keyof T)[];
   className?: string;
+  itemClassName?: string;
+  labelClassName?: string;
+  contentClassName?: string;
   disabled?: boolean;
   defaultExpandIndex?: number[];
   keyExtractor?: (item: T, index: number, thisData: Array<T>) => string;
@@ -43,6 +46,10 @@ const Collapse = <T,>(props: Props<T>) => {
   const {
     ref,
     data,
+    labelClassName,
+    contentClassName,
+    className,
+    itemClassName,
     defaultExpandIndex = [],
     keyExtractor,
     disabled,
@@ -136,10 +143,16 @@ const Collapse = <T,>(props: Props<T>) => {
   return (
     <ListRender
       data={data}
+      containerClassName={className}
+      itemClassName={itemClassName}
       keyExtractor={keyExtractor}
       renderItem={(item, index, thisData) => (
         <>
-          <div role="presentation" onClick={() => handleClickLabel(index)}>
+          <div
+            className={labelClassName}
+            role="presentation"
+            onClick={() => handleClickLabel(index)}
+          >
             {renderLabel({
               item: item,
               index,
@@ -147,7 +160,10 @@ const Collapse = <T,>(props: Props<T>) => {
               isExpand: isActive(index),
             })}
           </div>
-          <div style={{ display: isActive(index) ? 'block' : 'none' }}>
+          <div
+            className={contentClassName}
+            style={{ display: isActive(index) ? 'block' : 'none' }}
+          >
             {isRendered(index) &&
               renderContent({
                 item: item,

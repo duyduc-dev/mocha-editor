@@ -1,4 +1,3 @@
-
 import { RouterProvider } from 'react-router';
 import routes from './components/routes';
 import { Provider } from 'react-redux';

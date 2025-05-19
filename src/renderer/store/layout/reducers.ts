@@ -15,6 +15,7 @@ export const tabActionReducer = (
       return;
     case TabActionType.ADD: {
       const { id } = action.payload;
+      state.currentTab = id;
       if (state.tabBars[id]) return;
       state.tabBars = insertAfter(
         state.tabBars,
@@ -22,7 +23,6 @@ export const tabActionReducer = (
         id,
         action.payload,
       );
-      state.currentTab = id;
       break;
     }
     case TabActionType.CLOSE: {

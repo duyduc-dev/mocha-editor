@@ -12,6 +12,7 @@ import {
   fetchPathDirectory,
 } from '@renderer/store/explorer/thunk';
 import Button from '@renderer/components/ui/Button';
+import ScrollBarVirtual from '@renderer/components/ui/ScrollBarVirtual';
 
 const FileExploreTree = () => {
   const fileExplorer = useAppSelector(selectFileExplorer);
@@ -26,7 +27,16 @@ const FileExploreTree = () => {
   }, [workspacePath]);
 
   return (
-    <div className={styles.container}>
+    <ScrollBarVirtual
+      noScrollX
+      disableTracksWidthCompensation
+      wrapperProps={{
+        className: styles.wrapper,
+      }}
+      trackYProps={{ className: styles.trackYScroll }}
+      thumbYProps={{ className: styles.thumbYScroll }}
+      className={styles.container}
+    >
       {workspacePath ? (
         <ListRender
           keyExtractor={(item) => `${item.fullPath}`}
@@ -44,7 +54,7 @@ const FileExploreTree = () => {
           </Button>
         </div>
       )}
-    </div>
+    </ScrollBarVirtual>
   );
 };
 

@@ -7,8 +7,8 @@ import FileIcon from '@renderer/components/ui/FileIcon';
 import { X } from 'lucide-react';
 import classNames from 'classnames';
 import { setTabAction } from '@renderer/store/layout/slice';
-import ScrollHorizontal from '@renderer/components/ui/ScrollHorizontal';
 import ScrollBarVirtual from '@renderer/components/ui/ScrollBarVirtual';
+import ScrollHorizontal from '@renderer/components/ui/ScrollHorizontal';
 
 interface ITabBarProps {
   tabs: TabBarState;
@@ -21,7 +21,9 @@ const TabBar: FC<ITabBarProps> = (props) => {
 
   return (
     <div className={style.container}>
-      <ScrollBarVirtual className={classNames(style.tabsContainer)}>
+      <ScrollHorizontal
+        className={classNames(style.tabsContainer, style.scrollHorizontal)}
+      >
         {Object.values(tabs).map((tab) => (
           <div
             key={tab.id}
@@ -53,7 +55,7 @@ const TabBar: FC<ITabBarProps> = (props) => {
             </div>
           </div>
         ))}
-      </ScrollBarVirtual>
+      </ScrollHorizontal>
     </div>
   );
 };

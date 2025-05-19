@@ -1,36 +1,39 @@
 @use '@renderer/styles/common';
 
 .container {
+  width: 100%;
+  height: 100%;
   margin-top: 8px;
   max-height: common.$var-main-content-height;
-  overflow-y: auto;
-
-  // WebKit browsers (Chrome, Safari)
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.2); // semi-transparent thumb
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-  }
-
-  // Firefox
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 
   .btnOpenWorkspaceContainer {
     margin-top: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  &:hover {
+    .thumbYScroll {
+      background-color: common.$color-neutral-600 !important;
+    }
+  }
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+.trackYScroll {
+  background-color: transparent !important;
+  border-radius: 0px !important;
+
+  .thumbYScroll {
+    background-color: transparent !important;
+    border-radius: 0px !important;
+    width: 8px;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+    height: 100%;
   }
 }

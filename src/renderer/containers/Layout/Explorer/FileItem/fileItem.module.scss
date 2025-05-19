@@ -1,7 +1,8 @@
-@use "@renderer/styles/common";
+@use '@renderer/styles/common';
 
 .container {
   margin-bottom: 6px;
+
 
   &.fileHide {
     opacity: 0.5;
