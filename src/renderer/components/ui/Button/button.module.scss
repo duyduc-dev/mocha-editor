@@ -1,0 +1,18 @@
+@use '@renderer/styles/common';
+
+.container {
+  width: auto;
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: common.$color-neutral-800;
+  padding: 8px 16px;
+  text-align: center;
+  cursor: pointer;
+  color: common.$color-white;
+  transition: all 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

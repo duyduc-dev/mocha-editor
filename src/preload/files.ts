@@ -12,4 +12,7 @@ export const fileSystem: IMochaFileSystemApi = {
       dirPath,
     );
   },
+  openDialog: function (): Promise<string> {
+    return ipcRenderer.invoke(MochaHandleKey.OPEN_DIALOG);
+  },
 };

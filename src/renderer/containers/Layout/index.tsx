@@ -4,6 +4,25 @@ import styles from './layout.module.scss';
 import SidebarContent from '@renderer/containers/Layout/SidebarContent';
 import Sidebar from '@renderer/containers/Layout/Sidebar';
 import BottomBar from '@renderer/containers/Layout/BottomBar';
+import { Mosaic } from 'react-mosaic-component';
+import { ReactNode } from 'react';
+import TabBar from '@renderer/containers/Layout/TabBar';
+
+const ELEMENT_MAP: { [viewId: string]: ReactNode } = {
+  sidebar: (
+    <div className={styles.sideBarContent}>
+      <SidebarContent />
+    </div>
+  ),
+  content: (
+    <div className={styles.content}>
+      <TabBar />
+      <div>
+        <Outlet />
+      </div>
+    </div>
+  ),
+};
 
 const Layout = () => {
   return (
@@ -15,14 +34,21 @@ const Layout = () => {
         </div>
         <div className={styles.mainContainer}>
           <div className={styles.contentContainer}>
-            <div className={styles.sideBarContent}>
-              <SidebarContent />
-            </div>
-            <div className={styles.content}>
-              <Outlet />
-            </div>
+            <Mosaic<string>
+              className={styles.mosaic}
+              resize={{
+                minimumPaneSizePercentage: 10,
+              }}
+              renderTile={(id) => ELEMENT_MAP[id]}
+              initialValue={{
+                direction: 'row',
+                first: 'sidebar',
+                second: 'content',
+                splitPercentage: 20,
+              }}
+            />
           </div>
-          <BottomBar/>
+          <BottomBar />
         </div>
       </div>
     </div>

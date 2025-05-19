@@ -1,5 +1,5 @@
 import { FileNode } from '@shared/types/files';
-import { FC, memo } from 'react';
+import { FC, memo, Suspense } from 'react';
 import Collapse from '@renderer/components/ui/Collapse';
 import ListRender from '@renderer/components/ui/ListRender';
 import FileItem from '@renderer/containers/Layout/Explorer/FileItem';
@@ -23,13 +23,17 @@ const FileTreeItem: FC<IFileTreeItem> = (props) => {
           renderContent={({ item }) => (
             <>
               {item?.children?.length && (
-                <ListRender
-                  keyExtractor={(childItem) =>
-                    `${childItem.fullPath}-${childItem.name}`
-                  }
-                  data={item.children}
-                  renderItem={(childItem) => <FileTreeItem file={childItem} />}
-                />
+                <Suspense fallback={<p>Loading</p>}>
+                  <ListRender
+                    keyExtractor={(childItem) =>
+                      `${childItem.fullPath}-${childItem.name}`
+                    }
+                    data={item.children}
+                    renderItem={(childItem) => (
+                      <FileTreeItem file={childItem} />
+                    )}
+                  />
+                </Suspense>
               )}
             </>
           )}

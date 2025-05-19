@@ -17,10 +17,17 @@
       width: 20px;
     }
 
+    .iconWrapper {
+      min-width: 16px;
+    }
+
     .label {
       font-size: 13px;
       color: rgba(common.$color-white, 0.8);
       user-select: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }

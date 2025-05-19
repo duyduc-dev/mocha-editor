@@ -4,6 +4,7 @@ import started from 'electron-squirrel-startup';
 import { optimizer } from '@electron-toolkit/utils';
 import { registryHandlers } from '@main/registryHandlers';
 import './handlers';
+import { BrowserWindowInstance } from '@main/utils/BrowserWindowInstance';
 
 if (started) {
   app.quit();
@@ -20,7 +21,6 @@ const createWindow = () => {
     center: true,
     title: 'Mocha',
     frame: false,
-    vibrancy: 'under-window',
     visualEffectState: 'active',
     titleBarStyle: 'hidden',
     trafficLightPosition: { x: 15, y: 10 },
@@ -28,7 +28,7 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload/index.js'),
     },
   });
-
+  BrowserWindowInstance(mainWindow);
   // and load the index.html of the app.
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);

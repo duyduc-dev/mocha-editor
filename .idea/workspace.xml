@@ -5,31 +5,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01478803-7bd9-4bff-8e9d-ef7cd91eb147" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/ui/FileIcon/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/BottomBar/bottomBar.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/BottomBar/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileExploreTree/fileExploreTree.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/utilities/files.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/utils/BrowserWindowInstance.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/components/hooks/useHorizontalScroll.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/components/ui/Button/button.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/components/ui/Button/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/components/ui/ScrollBarVirtual/constants.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/components/ui/ScrollBarVirtual/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/components/ui/ScrollBarVirtual/service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/components/ui/ScrollHorizontal/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/components/ui/ScrollHorizontal/scrollHorizontal.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/TabBar/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/TabBar/tabBar.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/store/layout/reducers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/store/layout/service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/utilities/domCss.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/utilities/prefixStyle.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/utilities/string.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/components/ui/TopBar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/TopBar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/components/ui/TopBar/topBar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/TopBar/topBar.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/features/files/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/features/files/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/handlers/mochaApi/fileHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/handlers/mochaApi/fileHandler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/files.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/files.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/ui/FileIcon/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/ui/FileIcon/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/ui/Spinner/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/ui/Spinner/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/containers/AppLoadExplorer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/AppLoadExplorer/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileExploreTree/fileExploreTree.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileExploreTree/fileExploreTree.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileExploreTree/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileExploreTree/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileItem/fileItem.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileItem/fileItem.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileItem/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileItem/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileLabel/fileLabel.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileLabel/fileLabel.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileTreeItem/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileTreeItem/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/explorer.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/explorer.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/SidebarContent/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/SidebarContent/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/SidebarContent/sidebarContent.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/SidebarContent/sidebarContent.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/layout.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/layout.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/services/nativeModule/files/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/services/nativeModule/files/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/store/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/common.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/store/explorer/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/explorer/model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/store/explorer/selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/explorer/selector.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/store/explorer/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/explorer/slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/styles/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/styles/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/store/explorer/thunk.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/explorer/thunk.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/store/layout/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/layout/models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/store/layout/selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/layout/selector.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/store/layout/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/layout/slice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/styles/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/styles/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/utilities/colorUtils.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/utilities/colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/utilities/colors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/types/mochaApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/mochaApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/types/mochaHandleKey.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/mochaHandleKey.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,6 +177,13 @@
       <workItem from="1746950728809" duration="968000" />
       <workItem from="1746951713763" duration="19859000" />
       <workItem from="1747031082571" duration="9502000" />
+      <workItem from="1747040784105" duration="170000" />
+      <workItem from="1747045232331" duration="288000" />
+      <workItem from="1747046619555" duration="733000" />
+      <workItem from="1747085689933" duration="128000" />
+      <workItem from="1747317360416" duration="10332000" />
+      <workItem from="1747464083978" duration="21222000" />
+      <workItem from="1747529783072" duration="2590000" />
     </task>
     <servers />
   </component>

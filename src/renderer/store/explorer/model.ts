@@ -3,4 +3,5 @@ import { FileNode } from '@shared/types/files';
 
 export interface IExplorerState extends IBaseState {
   fileSystem: FileNode[];
+  workspacePath: string | null;
 }

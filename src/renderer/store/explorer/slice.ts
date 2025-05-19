@@ -1,10 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IExplorerState } from '@renderer/store/explorer/models';
-import { fetchExplorerSystem } from '@renderer/store/explorer/thunk';
+import { IExplorerState } from '@renderer/store/explorer/model';
+import {
+  fetchExplorerSystem,
+  fetchPathDirectory,
+} from '@renderer/store/explorer/thunk';
 import { sortDir } from '@renderer/utilities/files';
 
 const initialState: IExplorerState = {
   status: 'Init',
+  workspacePath: null,
   fileSystem: [],
 };
 
@@ -29,6 +33,10 @@ const explorerSlice = createSlice({
         message: action.error.message,
         stack: action.error.stack,
       };
+    });
+
+    builder.addCase(fetchPathDirectory.fulfilled, (state, action) => {
+      state.workspacePath = action.payload;
     });
   },
 });

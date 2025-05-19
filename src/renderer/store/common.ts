@@ -59,9 +59,15 @@ export type ThunkConfig = {
   extra: IAppServices;
   dispatch: AppDispatch;
 };
-export const createAppAsyncThunk = <R = unknown, A = unknown>(
+
+export type ThunkPayloadCreator<
+  R = unknown,
+  A = void,
+> = AsyncThunkPayloadCreator<R, A, ThunkConfig>;
+
+export const createAppAsyncThunk = <R = unknown, A = void>(
   typePrefix: string,
-  payloadCreator: AsyncThunkPayloadCreator<R, A, ThunkConfig>,
+  payloadCreator: ThunkPayloadCreator<R, A>,
   options?: AsyncThunkOptions<A, ThunkConfig>,
 ) => createAsyncThunk(typePrefix, payloadCreator, options);
 export const useAppDispatch = () => useDispatch<AppDispatch>();

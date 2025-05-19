@@ -1,0 +1,8 @@
+.container {
+  user-select: none;
+  height: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  display: flex;
+  transition: all 0.1s linear;
+}

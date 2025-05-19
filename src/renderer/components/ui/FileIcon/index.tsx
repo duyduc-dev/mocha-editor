@@ -98,10 +98,6 @@ const getIconType = ({
   const Icon = getIconComponent();
 
   if (isDirectory) {
-    if (Icon) {
-      return <Icon name="icon" color={color} height={height} width={width} />;
-    }
-
     return isDirExpand ? (
       <FolderOpen size={width} color={color} opacity={0.5} />
     ) : (

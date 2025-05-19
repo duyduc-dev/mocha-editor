@@ -3,6 +3,7 @@ import { FileNode } from '@shared/types/files';
 export interface IMochaFileSystemApi {
   getDirectoryTree: (dirPath: string) => Promise<FileNode[]>;
   getDirectoryTreeWithParent: (dirPath: string) => Promise<FileNode>;
+  openDialog: () => Promise<string>;
 }
 
 export interface IMochaApi {

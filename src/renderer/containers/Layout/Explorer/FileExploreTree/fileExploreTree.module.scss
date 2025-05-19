@@ -26,4 +26,11 @@
   // Firefox
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+
+  .btnOpenWorkspaceContainer {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

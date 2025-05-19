@@ -1,8 +1,7 @@
 import cx from 'classnames';
 import React from 'react';
 import styles from './spinner.module.scss';
-import { hexToRgb } from '@renderer/utilities/colorUtils';
-import { colors } from '@renderer/utilities/colors';
+import { colors, hexToRgb } from '@renderer/utilities/colors';
 
 interface ISpinnerProps {
   styles?: React.CSSProperties;
