@@ -3,6 +3,7 @@ import {
   getDirectoryTree,
   getDirectoryTreeWithParent,
   openDialog,
+  readFile,
 } from '@main/features/files';
 import { MochaHandleKey } from '@shared/types/mochaHandleKey';
 
@@ -26,4 +27,10 @@ export const openDialogHandler: IMochaHandler = {
   type: 'handler',
   name: MochaHandleKey.OPEN_DIALOG,
   run: async (window) => openDialog(window),
+};
+
+export const readFileHandler: IMochaHandler = {
+  type: 'handler',
+  name: MochaHandleKey.READ_FILE,
+  run: async (_, __, filePath: string) => readFile(filePath),
 };

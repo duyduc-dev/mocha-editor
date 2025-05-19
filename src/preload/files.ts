@@ -15,4 +15,6 @@ export const fileSystem: IMochaFileSystemApi = {
   openDialog: function (): Promise<string> {
     return ipcRenderer.invoke(MochaHandleKey.OPEN_DIALOG);
   },
+  readFile: (filePath) =>
+    ipcRenderer.invoke(MochaHandleKey.READ_FILE, filePath),
 };

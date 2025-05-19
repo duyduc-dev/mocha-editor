@@ -32,6 +32,12 @@ export function getDirectoryTreeWithParent(dirPath: string): FileNode {
   };
 }
 
+export function readFile(filePath: string): Promise<string> {
+  return new Promise((resolve) => {
+    resolve(fs.readFileSync(filePath, 'utf8'));
+  });
+}
+
 export async function openDialog(mainWindow: BrowserWindow) {
   const result = await dialog.showOpenDialog(mainWindow, {
     properties: ['openFile', 'openDirectory'], // or just 'openDirectory'
