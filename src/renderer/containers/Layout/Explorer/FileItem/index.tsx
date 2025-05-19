@@ -19,7 +19,6 @@ const FileItem: FC<IFileItem> = (props) => {
 
   const handleDoubleClick = () => {
     if (file.isDirectory) return;
-    window.mochaApi.window.close();
     dispatch(
       setTabAction({
         type: TabActionType.ADD,
