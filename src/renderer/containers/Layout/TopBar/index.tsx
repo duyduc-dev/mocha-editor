@@ -8,18 +8,21 @@ const TopBar = () => {
   };
   return (
     <>
-      <div className={styles.container} style={inlineStyle}></div>
-      <div className={styles.windowActionContainer}>
+      <div className={styles.container} style={inlineStyle}>
+        <div></div>
         {window.mochaApi.window.platform === Platform.WINDOWS && (
-          <button
-            onClick={() => {
-              console.log('testex');
+          <div className={styles.windowActionContainer}>
+            <button
+              className={styles.btnCloseWindow}
+              onClick={() => {
+                console.log('testex');
 
-              window.mochaApi.window.close();
-            }}
-          >
-            <X />
-          </button>
+                window.mochaApi.window.close();
+              }}
+            >
+              <X />
+            </button>
+          </div>
         )}
       </div>
     </>

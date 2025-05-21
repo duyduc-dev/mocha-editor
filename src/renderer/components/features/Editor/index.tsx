@@ -1,9 +1,7 @@
 import styles from './styles.module.scss';
-import MonacaEditor from '@renderer/components/features/Editor/MonacaEditor';
 import { useAppSelector } from '@renderer/store/common';
 import { selectCurrentFile } from '@renderer/store/layout/selector';
 import { useEffect, useState } from 'react';
-import CodeMirror from '@renderer/components/features/Editor/CodeMirror';
 
 const Editor = () => {
   const file = useAppSelector(selectCurrentFile);
@@ -16,12 +14,7 @@ const Editor = () => {
       });
   }, [file]);
 
-  return (
-    <div className={styles.container}>
-      {/*<MonacaEditor language="typescript" value={currentFile}  />*/}
-      <CodeMirror value={currentFile || ''} />
-    </div>
-  );
+  return <div className={styles.container}></div>;
 };
 
 export default Editor;

@@ -1,3 +1,5 @@
+@use '@renderer/styles/common';
+
 .container {
   height: 32px;
   width: 100%;
@@ -6,13 +8,32 @@
   left: 0;
   z-index: 9999;
   user-select: none;
+  display: flex;
+  justify-content: space-between;
 }
 
 .windowActionContainer {
   -webkit-app-region: no-drag;
   color: white;
   z-index: 9999;
-  position: absolute;
-  top: 0;
-  right: 0;
+
+  .btnCloseWindow {
+    outline: none;
+    color: common.$color-white;
+    background-color: transparent;
+    border: 1px solid transparent;
+    width: common.$var-header-height;
+    height: common.$var-header-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      background-color: common.$color-red-700;
+      opacity: 1;
+    }
+  }
 }
