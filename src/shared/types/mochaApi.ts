@@ -16,6 +16,7 @@ export interface IMochaWindowApi {
 export interface IMochaFileSystemApi {
   getDirectoryTree: (dirPath: string) => Promise<FileNode[]>;
   getDirectoryTreeWithParent: (dirPath: string) => Promise<FileNode>;
+  readFile: (filePath: string) => Promise<string>;
   openDialog: () => Promise<string>;
 }
 

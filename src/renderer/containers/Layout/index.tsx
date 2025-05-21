@@ -17,7 +17,7 @@ const ELEMENT_MAP: { [viewId: string]: ReactNode } = {
   content: (
     <div className={styles.content}>
       <TabBar />
-      <div>
+      <div className={styles.children}>
         <Outlet />
       </div>
     </div>

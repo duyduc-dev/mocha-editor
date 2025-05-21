@@ -5,54 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01478803-7bd9-4bff-8e9d-ef7cd91eb147" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/utils/BrowserWindowInstance.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/hooks/useHorizontalScroll.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/ui/Button/button.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/ui/Button/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/ui/ScrollBarVirtual/constants.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/ui/ScrollBarVirtual/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/ui/ScrollBarVirtual/service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/ui/ScrollHorizontal/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/ui/ScrollHorizontal/scrollHorizontal.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/TabBar/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/TabBar/tabBar.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/store/layout/reducers.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/store/layout/service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/utilities/domCss.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/utilities/prefixStyle.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/utilities/string.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/components/features/Editor/CodeMirror/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/components/features/Editor/MonacaEditor/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/components/features/Editor/styles.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/features/files/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/features/files/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/handlers/mochaApi/fileHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/handlers/mochaApi/fileHandler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/preload/files.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/files.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/components/ui/FileIcon/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/ui/FileIcon/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/components/ui/Spinner/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/ui/Spinner/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/containers/AppLoadExplorer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/AppLoadExplorer/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileExploreTree/fileExploreTree.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileExploreTree/fileExploreTree.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileExploreTree/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileExploreTree/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileItem/fileItem.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileItem/fileItem.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileItem/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileItem/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileTreeItem/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileTreeItem/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/SidebarContent/sidebarContent.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/SidebarContent/sidebarContent.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/features/Editor/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/features/Editor/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/layout.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/layout.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/services/nativeModule/files/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/services/nativeModule/files/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/store/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/common.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/store/explorer/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/explorer/model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/store/explorer/selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/explorer/selector.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/store/explorer/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/explorer/slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/store/explorer/thunk.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/explorer/thunk.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/store/layout/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/layout/models.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/store/layout/selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/layout/selector.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/store/layout/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/layout/slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/styles/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/styles/main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/utilities/colorUtils.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/utilities/colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/utilities/colors.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shared/types/mochaApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/mochaApi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shared/types/mochaHandleKey.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/mochaHandleKey.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
@@ -74,12 +40,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="dev" />
-                    <option name="lastUsedInstant" value="1746881267" />
+                    <option name="branchName" value="feat/monaco-editor" />
+                    <option name="lastUsedInstant" value="1747666116" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1746881266" />
+                    <option name="branchName" value="dev" />
+                    <option name="lastUsedInstant" value="1746881267" />
                   </RecentBranch>
                 </list>
               </option>
@@ -98,27 +64,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/ducdang/workspace/electron/mocha-editor/src/renderer&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/ducdang/workspace/electron/mocha-editor/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/ducdang/workspace/electron/mocha-editor/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feat/monaco-editor",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/ducdang/workspace/electron/mocha-editor/src/renderer",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "prettierjs.PrettierConfiguration.Package": "/Users/ducdang/workspace/electron/mocha-editor/node_modules/prettier",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "ts.external.directory.path": "/Users/ducdang/workspace/electron/mocha-editor/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -184,6 +150,7 @@
       <workItem from="1747317360416" duration="10332000" />
       <workItem from="1747464083978" duration="21222000" />
       <workItem from="1747529783072" duration="2590000" />
+      <workItem from="1747663390689" duration="6141000" />
     </task>
     <servers />
   </component>
