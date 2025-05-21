@@ -4,6 +4,7 @@ export const colors = {
   white: '#ffffff',
   black: '#000000',
   transparent: '#00000000',
+  mainBackground: '#2e2e2e',
   red: {
     50: '#fef2f2',
     100: '#fee2e2',

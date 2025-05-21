@@ -1,10 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IExplorerState } from '@renderer/store/explorer/model';
 import {
   fetchExplorerSystem,
   fetchPathDirectory,
 } from '@renderer/store/explorer/thunk';
 import { sortDir } from '@renderer/utilities/files';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const initialState: IExplorerState = {
   status: 'Init',
@@ -15,7 +17,11 @@ const initialState: IExplorerState = {
 const explorerSlice = createSlice({
   name: 'explorer',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setWorkspacePath: (state, action: PayloadAction<string | null>) => {
+      state.workspacePath = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchExplorerSystem.pending, (state, action) => {
       state.status = 'Pending';
@@ -41,6 +47,15 @@ const explorerSlice = createSlice({
   },
 });
 
-const { reducer: explorerReducer, actions } = explorerSlice;
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['workspacePath'],
+};
+
+const { reducer, actions } = explorerSlice;
+
+const explorerReducer = persistReducer(persistConfig, reducer);
 
 export { explorerReducer };
+export const { setWorkspacePath } = actions;
