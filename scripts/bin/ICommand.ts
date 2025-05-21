@@ -1,8 +1,9 @@
-import { Command as BaseCommand } from "commander";
+import { Command as BaseCommand } from 'commander';
 
 export type MochaCommandConfig = BaseCommand;
 
 export abstract class MochaCommand {
+  static commandName: string;
   configure?(config: MochaCommandConfig): void;
   abstract execute(...args: any[]): void;
 }
@@ -15,7 +16,7 @@ export class CommandRunner {
   private program = new BaseCommand();
 
   constructor() {
-    this.program.name("cli").description("CLI tool using command pattern");
+    this.program.name('cli').description('CLI tool using command pattern');
   }
 
   registerAll() {

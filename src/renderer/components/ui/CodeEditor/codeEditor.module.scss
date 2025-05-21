@@ -1,0 +1,9 @@
+.codeEditor {
+  border-color: transparent;
+  outline: none;
+
+  &:focus {
+    outline: none;
+    border-color: transparent;
+  }
+}

@@ -4,6 +4,8 @@ import Collapse from '@renderer/components/ui/Collapse';
 import ListRender from '@renderer/components/ui/ListRender';
 import FileItem from '@renderer/containers/Layout/Explorer/FileItem';
 import styles from './fileTreeItem.module.scss';
+import { useContextMenu } from 'react-contexify';
+import { FILE_CONTEXT_MENU_ID } from '../FileExploreTree/FileContextMenu';
 
 interface IFileTreeItem {
   file: FileNode;
@@ -11,6 +13,15 @@ interface IFileTreeItem {
 
 const FileTreeItem: FC<IFileTreeItem> = (props) => {
   const { file } = props;
+  const { show } = useContextMenu({
+    id: FILE_CONTEXT_MENU_ID,
+  });
+
+  const handleContextMenu = (event: any) =>
+    show({
+      event: event,
+    });
+
   return (
     <div className={styles.container} key={`${file.fullPath}-${file.name}`}>
       {file.isDirectory ? (
@@ -18,7 +29,11 @@ const FileTreeItem: FC<IFileTreeItem> = (props) => {
           keyExtractor={(item) => `${item.fullPath}-${item.name}`}
           data={[file]}
           renderLabel={({ item, isExpand }) => (
-            <FileItem file={item} isExpand={isExpand} />
+            <FileItem
+              file={item}
+              isExpand={isExpand}
+              onContextMenu={handleContextMenu}
+            />
           )}
           renderContent={({ item }) => (
             <>
@@ -39,7 +54,7 @@ const FileTreeItem: FC<IFileTreeItem> = (props) => {
           )}
         />
       ) : (
-        <FileItem file={file} />
+        <FileItem file={file} onContextMenu={handleContextMenu} />
       )}
     </div>
   );

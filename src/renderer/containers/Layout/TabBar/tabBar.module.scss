@@ -9,7 +9,7 @@
 
   .tabsContainer {
     display: flex !important;
-    height: 42px !important;
+    height: common.$var-tab-top-bar-height !important;
 
     &.scrollHorizontal {
       width: 100% !important;
@@ -69,6 +69,7 @@
         cursor: pointer;
         gap: 4px;
         user-select: none;
+        text-wrap: nowrap;
       }
 
       .iconContainer {

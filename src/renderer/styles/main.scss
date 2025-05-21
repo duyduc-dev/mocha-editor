@@ -3,6 +3,7 @@
 @use '@blueprintjs/core/lib/css/blueprint.css';
 @use '@blueprintjs/icons/lib/css/blueprint-icons.css';
 @use 'normalize.css';
+@use 'react-contexify/dist/ReactContexify.css';
 
 * {
   padding: 0;
@@ -11,7 +12,7 @@
 }
 
 html {
-  background-color: rgba(common.$color-neutral-900, 0.9);
+  background-color: common.$color-main-background;
 }
 
 body {
@@ -27,9 +28,42 @@ p {
   margin: 0;
 }
 
+.contexify_theme-dark {
+  --contexify-menu-bgColor: rgba(40, 40, 40, 0.98);
+  --contexify-separator-color: #4c4c4c;
+  --contexify-item-color: #fff;
+}
+
 .mosaic-split.-row:hover {
   background-color: rgba(common.$color-white, 0.1);
   width: px;
 
   transition: all 0.2s ease-in-out;
+}
+
+.scrollMain {
+  width: 100% !important;
+
+  // WebKit browsers (Chrome, Safari)
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent; // semi-transparent thumb
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  // Firefox
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }

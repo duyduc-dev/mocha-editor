@@ -13,6 +13,8 @@ import {
 } from '@renderer/store/explorer/thunk';
 import Button from '@renderer/components/ui/Button';
 import ScrollBarVirtual from '@renderer/components/ui/ScrollBarVirtual';
+import FileContextMenu from './FileContextMenu';
+import PortalRoot from '@renderer/containers/PortalRoot';
 
 const FileExploreTree = () => {
   const fileExplorer = useAppSelector(selectFileExplorer);
@@ -38,15 +40,16 @@ const FileExploreTree = () => {
       className={styles.container}
     >
       {workspacePath ? (
-        <ListRender
-          keyExtractor={(item) => `${item.fullPath}`}
-          data={fileExplorer}
-          renderItem={(item) => (
-            <Suspense fallback={<p>Loading</p>}>
-              <FileTreeItem file={item} />
-            </Suspense>
-          )}
-        />
+        <Suspense fallback={<p>Loading</p>}>
+          <ListRender
+            keyExtractor={(item) => `${item.fullPath}`}
+            data={fileExplorer}
+            renderItem={(item) => <FileTreeItem file={item} />}
+          />
+          <PortalRoot>
+            <FileContextMenu />
+          </PortalRoot>
+        </Suspense>
       ) : (
         <div className={styles.btnOpenWorkspaceContainer}>
           <Button onClick={() => dispatch(fetchPathDirectory())}>
