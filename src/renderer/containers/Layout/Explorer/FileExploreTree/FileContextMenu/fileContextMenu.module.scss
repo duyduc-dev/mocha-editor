@@ -1,4 +1,29 @@
+@use '@renderer/styles/common';
+
 .container {
+  background-color: common.$color-neutral-800;
+
   .item {
+    :global(.contexify_itemContent) {
+      color: rgba(common.$color-white, 0.6);
+    }
+
+    &:hover {
+      :global(.contexify_itemContent) {
+        background-color: common.$color-neutral-700;
+      }
+    }
+
+    .itemWrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  }
+
+  .separator {
+    height: 1px;
+    background-color: common.$color-neutral-700;
+    margin: 6px 0;
   }
 }

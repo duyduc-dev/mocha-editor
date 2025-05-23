@@ -1,14 +1,16 @@
-import { RouterProvider } from 'react-router';
-import routes from './components/routes';
 import { Provider } from 'react-redux';
 import { persistor, store } from '@renderer/store';
 import { PersistGate } from 'redux-persist/integration/react';
+import AppContainer from './containers/AppContainer';
+import { LocaleProvider } from './locale';
 
 const App = () => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <RouterProvider router={routes} />
+        <LocaleProvider>
+          <AppContainer />
+        </LocaleProvider>
       </PersistGate>
     </Provider>
   );

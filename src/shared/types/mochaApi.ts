@@ -18,6 +18,11 @@ export interface IMochaFileSystemApi {
   getDirectoryTreeWithParent: (dirPath: string) => Promise<FileNode>;
   readFile: (filePath: string) => Promise<string>;
   openDialog: () => Promise<string>;
+  writeFile: (
+    dir: string,
+    fileName: string,
+    content?: string,
+  ) => Promise<string>;
 }
 
 export interface IMochaApi {

@@ -1,0 +1,51 @@
+@use '@renderer/styles/common';
+
+.container {
+  padding: 8px 16px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #fff;
+
+  .title {
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 12px;
+  }
+
+  .input {
+    color: #fff;
+    outline: 0;
+    border: 1px solid transparent;
+    padding: 8px 16px;
+    border-radius: 8px;
+    width: 100%;
+    background-color: common.$color-neutral-800;
+  }
+
+  .formInput {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .action {
+    display: flex;
+    justify-content: flex-end;
+
+    .btnCreateNewFile {
+      background-color: common.$color-neutral-800;
+      outline: 0;
+      border: 1px solid transparent;
+      padding: 8px 16px;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 500;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+  }
+}

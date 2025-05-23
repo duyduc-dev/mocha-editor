@@ -20,3 +20,13 @@ export const sortDir = (nodes: FileNode[]): FileNode[] => {
       return rankA !== rankB ? rankA - rankB : a.name.localeCompare(b.name);
     });
 };
+
+export const getPathFolder = (file: FileNode): string => {
+  const normalizedPath = file.fullPath.replace(/\\/g, '/'); // normalize Windows paths
+
+  if (file.isDirectory) return normalizedPath;
+
+  const parts = normalizedPath.split('/');
+  parts.pop();
+  return parts.join('/') || '/';
+};

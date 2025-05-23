@@ -38,6 +38,17 @@ export function readFile(filePath: string): Promise<string> {
   });
 }
 
+export function writeFile(
+  dir: string,
+  fileName: string,
+  content = '',
+): Promise<void> {
+  return new Promise(() => {
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, fileName), content);
+  });
+}
+
 export async function openDialog(mainWindow: BrowserWindow) {
   const result = await dialog.showOpenDialog(mainWindow, {
     properties: ['openFile', 'openDirectory'], // or just 'openDirectory'

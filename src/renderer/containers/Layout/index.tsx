@@ -5,26 +5,31 @@ import SidebarContent from '@renderer/containers/Layout/SidebarContent';
 import Sidebar from '@renderer/containers/Layout/Sidebar';
 import BottomBar from '@renderer/containers/Layout/BottomBar';
 import { Mosaic } from 'react-mosaic-component';
-import { ReactNode } from 'react';
+import { ReactNode, useMemo } from 'react';
 import TabBar from '@renderer/containers/Layout/TabBar';
 
-const ELEMENT_MAP: { [viewId: string]: ReactNode } = {
-  sidebar: (
-    <div className={styles.sideBarContent}>
-      <SidebarContent />
-    </div>
-  ),
-  content: (
-    <div className={styles.content}>
-      <TabBar />
-      <div className={styles.children}>
-        <Outlet />
-      </div>
-    </div>
-  ),
-};
+interface LayoutProps {
+  children: ReactNode;
+}
 
-const Layout = () => {
+const Layout = ({ children }: LayoutProps) => {
+  const ELEMENT_MAP: { [viewId: string]: ReactNode } = useMemo(
+    () => ({
+      sidebar: (
+        <div className={styles.sideBarContent}>
+          <SidebarContent />
+        </div>
+      ),
+      content: (
+        <div className={styles.content}>
+          <TabBar />
+          <div className={styles.children}>{children}</div>
+        </div>
+      ),
+    }),
+    [],
+  );
+
   return (
     <div className={styles.container}>
       <TopBar />

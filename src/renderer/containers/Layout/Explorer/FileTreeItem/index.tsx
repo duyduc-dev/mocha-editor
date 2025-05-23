@@ -20,6 +20,9 @@ const FileTreeItem: FC<IFileTreeItem> = (props) => {
   const handleContextMenu = (event: any) =>
     show({
       event: event,
+      props: {
+        file,
+      },
     });
 
   return (

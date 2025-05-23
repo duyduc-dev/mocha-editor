@@ -17,4 +17,12 @@ export const fileSystem: IMochaFileSystemApi = {
   },
   readFile: (filePath) =>
     ipcRenderer.invoke(MochaHandleKey.READ_FILE, filePath),
+  writeFile(dir, fileName, content) {
+    return ipcRenderer.invoke(
+      MochaHandleKey.WRITE_FILE,
+      dir,
+      fileName,
+      content,
+    );
+  },
 };

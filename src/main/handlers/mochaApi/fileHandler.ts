@@ -4,8 +4,10 @@ import {
   getDirectoryTreeWithParent,
   openDialog,
   readFile,
+  writeFile,
 } from '@main/features/files';
 import { MochaHandleKey } from '@shared/types/mochaHandleKey';
+import { string } from 'zod';
 
 export const getDirectoryTreeHandler: IMochaHandler = {
   type: 'handler',
@@ -33,4 +35,12 @@ export const readFileHandler: IMochaHandler = {
   type: 'handler',
   name: MochaHandleKey.READ_FILE,
   run: async (_, __, filePath: string) => readFile(filePath),
+};
+
+export const writeFileHandler: IMochaHandler = {
+  type: 'handler',
+  name: MochaHandleKey.WRITE_FILE,
+  run: async (_, __, dir: string, fileName: string, content = '') => {
+    writeFile(dir, fileName, content);
+  },
 };
