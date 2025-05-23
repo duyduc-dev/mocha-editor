@@ -14,9 +14,17 @@ const config: ForgeConfig = {
   rebuildConfig: {},
   makers: [
     new MakerSquirrel({}),
-    new MakerZIP({}, ['darwin']),
+    // new MakerZIP({}, ['darwin']),
     new MakerRpm({}),
     new MakerDeb({}),
+    {
+      name: '@electron-forge/maker-dmg',
+      config: {
+        setupIcon: './assets/mocha.png',
+        format: 'ULFO',
+        iconUrl: './assets/mocha.png',
+      },
+    },
   ],
   plugins: [
     new VitePlugin({

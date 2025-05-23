@@ -1,4 +1,19 @@
+@use '@renderer/styles/common';
+
 .container {
+  background-color: common.$color-neutral-800;
+
   .item {
+
+    &:hover {
+      :global(.contexify_itemContent) {
+        color: common.$color-neutral-300 !important;
+        background-color: common.$color-neutral-700;
+      }
+    }
+
+    :global(.contexify_itemContent) {
+      color: common.$color-neutral-500 !important;
+    }
   }
 }

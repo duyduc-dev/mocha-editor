@@ -5,22 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01478803-7bd9-4bff-8e9d-ef7cd91eb147" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/features/Editor/CodeMirror/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/features/Editor/MonacaEditor/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/features/Editor/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/forge.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/features/files/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/features/files/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/handlers/mochaApi/fileHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/handlers/mochaApi/fileHandler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preload/files.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/files.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/components/features/Editor/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/features/Editor/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/layout.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/layout.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/store/layout/selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/layout/selector.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/store/layout/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store/layout/slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/types/mochaApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/mochaApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/types/mochaHandleKey.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/mochaHandleKey.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileExploreTree/FileContextMenu/fileContextMenu.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileExploreTree/FileContextMenu/fileContextMenu.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileExploreTree/FileContextMenu/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/containers/Layout/Explorer/FileExploreTree/FileContextMenu/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,27 +53,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feat/monaco-editor",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/ducdang/workspace/electron/mocha-editor/src/renderer",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "/Users/ducdang/workspace/electron/mocha-editor/node_modules/prettier",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "ts.external.directory.path": "/Users/ducdang/workspace/electron/mocha-editor/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ducdang/workspace/electron/mocha-editor/src/renderer&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/ducdang/workspace/electron/mocha-editor/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/ducdang/workspace/electron/mocha-editor/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -151,6 +140,7 @@
       <workItem from="1747464083978" duration="21222000" />
       <workItem from="1747529783072" duration="2590000" />
       <workItem from="1747663390689" duration="6141000" />
+      <workItem from="1747846782109" duration="1654000" />
     </task>
     <servers />
   </component>

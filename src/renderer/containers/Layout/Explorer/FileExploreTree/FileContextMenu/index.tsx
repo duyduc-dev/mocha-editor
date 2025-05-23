@@ -35,11 +35,11 @@ const FileContextMenu = () => {
   };
 
   return (
-    <Menu id={FILE_CONTEXT_MENU_ID} color="red">
-      <Item id="create-new-file" onClick={handleClick}>
+    <Menu id={FILE_CONTEXT_MENU_ID} className={styles.container}>
+      <Item id="create-new-file" onClick={handleClick} className={styles.item}>
         <span>New file</span>
       </Item>
-      <Item id="remove-workspace" onClick={handleClick}>
+      <Item id="remove-workspace" onClick={handleClick} className={styles.item}>
         <span>Remove from workspace</span>
       </Item>
     </Menu>
