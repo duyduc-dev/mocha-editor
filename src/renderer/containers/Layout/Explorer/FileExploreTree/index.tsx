@@ -44,7 +44,9 @@ const FileExploreTree = () => {
           <ListRender
             keyExtractor={(item) => `${item.fullPath}`}
             data={fileExplorer}
-            renderItem={(item) => <FileTreeItem file={item} />}
+            renderItem={(item, index) => (
+              <FileTreeItem file={item} index={index} />
+            )}
           />
           <PortalRoot>
             <FileContextMenu />

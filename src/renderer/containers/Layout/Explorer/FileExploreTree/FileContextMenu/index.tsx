@@ -1,25 +1,33 @@
 import { useAppDispatch } from '@renderer/store/common';
 import { setWorkspacePath } from '@renderer/store/explorer/slice';
 import {
+  contextMenu,
   Item,
   ItemParams,
   Menu,
-  contextMenu,
-  Separator,
+  TriggerEvent,
 } from 'react-contexify';
 import styles from './fileContextMenu.module.scss';
 import { showModal } from '@renderer/store/modal/slice';
 import { ModalType } from '@renderer/containers/ModalRoot/constants';
-import { FilePlus2 } from 'lucide-react';
 import { fileContextMenus, FileCxtMenuType } from './constants';
 import { useLocale } from '@renderer/locale';
+import { FileNode } from '@shared/types/files';
+import { useCallback } from 'react';
+import { refetchExplorerSystem } from '@renderer/store/explorer/thunk';
+import { setTabAction } from '@renderer/store/layout/slice';
+import { TabActionType } from '@renderer/store/layout/models';
 
 export const FILE_CONTEXT_MENU_ID = 'FileContextMenu';
 
-export const showFileContextMenu = (e: any) => {
+export const showFileContextMenu = (
+  e: TriggerEvent,
+  data: { file: FileNode },
+) => {
   contextMenu.show({
     id: FILE_CONTEXT_MENU_ID,
     event: e,
+    props: data,
   });
 };
 
@@ -27,7 +35,7 @@ const FileContextMenu = () => {
   const dispatch = useAppDispatch();
   const { t } = useLocale();
 
-  const handleClick = (e: ItemParams) => {
+  const handleClick = useCallback(async (e: ItemParams<{ file: FileNode }>) => {
     switch (e.id) {
       case FileCxtMenuType.CREATE_NEW_FILE:
         dispatch(
@@ -37,11 +45,24 @@ const FileContextMenu = () => {
           }),
         );
         break;
+      case FileCxtMenuType.DELETE_FILE: {
+        if (e.props?.file) {
+          await window.mochaApi.fileSystem.deleteFile(e.props?.file.fullPath);
+          dispatch(
+            setTabAction({
+              type: TabActionType.CLOSE,
+              payload: e.props?.file.fullPath,
+            }),
+          );
+          await dispatch(refetchExplorerSystem());
+        }
+        break;
+      }
       case FileCxtMenuType.REMOVE_WORKSPACE:
         dispatch(setWorkspacePath(null));
         break;
     }
-  };
+  }, []);
 
   return (
     <Menu id={FILE_CONTEXT_MENU_ID} color="dark" className={styles.container}>

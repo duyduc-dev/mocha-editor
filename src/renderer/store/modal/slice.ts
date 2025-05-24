@@ -8,7 +8,7 @@ const initState: IModalState = {
 const modalSlice = createSlice({
   name: 'modal',
   initialState: initState,
-  reducers: {
+  reducers: (create) => ({
     showModal: (state, action: PayloadAction<ModalOption>) => {
       state.type = action.payload.type;
       state.data = action.payload.data;
@@ -17,7 +17,7 @@ const modalSlice = createSlice({
       state.type = null;
       state.data = undefined;
     },
-  },
+  }),
 });
 
 export const { reducer: modalReducer, actions } = modalSlice;

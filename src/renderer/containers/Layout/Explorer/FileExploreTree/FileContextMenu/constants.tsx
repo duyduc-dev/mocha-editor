@@ -1,4 +1,4 @@
-import { FilePlus2 } from 'lucide-react';
+import { FilePlus2, Trash } from 'lucide-react';
 import { ReactNode } from 'react';
 
 type FileContextMenuList =
@@ -14,6 +14,7 @@ type FileContextMenuList =
 
 export enum FileCxtMenuType {
   CREATE_NEW_FILE = 'CREATE_NEW_FILE',
+  DELETE_FILE = 'DELETE_FILE',
   REMOVE_WORKSPACE = 'REMOVE_WORKSPACE',
 }
 
@@ -22,6 +23,15 @@ export const fileContextMenus: FileContextMenuList[] = [
     id: FileCxtMenuType.CREATE_NEW_FILE,
     icon: <FilePlus2 width={15} height={15} />,
     title: 'newFile',
+    separator: false,
+  },
+  {
+    separator: true,
+  },
+  {
+    id: FileCxtMenuType.DELETE_FILE,
+    title: 'delete',
+    icon: <Trash width={15} height={15} />,
     separator: false,
   },
   {

@@ -17,7 +17,7 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   UnknownAction
 >;
 
-type AppDispatch = ThunkDispatch<IAppState, IAppServices, UnknownAction>;
+export type AppDispatch = ThunkDispatch<IAppState, IAppServices, UnknownAction>;
 
 export type ActionStatus = 'Init' | 'Pending' | 'Success' | 'Error';
 

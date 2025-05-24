@@ -1,10 +1,17 @@
 import { ComponentType } from 'react';
 import { ModalType } from './constants';
 import CreateNewFileModal from './modals/CreateNewFile';
-import { ModalProps } from '@renderer/store/modal/model';
 import { useAppDispatch, useAppSelector } from '@renderer/store/common';
 import { closeModal } from '@renderer/store/modal/slice';
 import PortalRoot from '../PortalRoot';
+import { FileNode } from '@shared/types/files';
+import { ModalProps } from './model';
+
+type ModalDataProps = {
+  [ModalType.CREATE_NEW_FILE]: {
+    file: FileNode;
+  };
+};
 
 const MODALS: Record<ModalType, ComponentType<{ modalProps: ModalProps }>> = {
   [ModalType.CREATE_NEW_FILE]: CreateNewFileModal,

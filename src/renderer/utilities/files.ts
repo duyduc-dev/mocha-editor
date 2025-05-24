@@ -21,12 +21,27 @@ export const sortDir = (nodes: FileNode[]): FileNode[] => {
     });
 };
 
-export const getPathFolder = (file: FileNode): string => {
-  const normalizedPath = file.fullPath.replace(/\\/g, '/'); // normalize Windows paths
+export function getPathFolder(path: string, isDir: boolean): string;
+export function getPathFolder(file: FileNode): string;
+export function getPathFolder(
+  fileOrPath: string | FileNode,
+  isDir?: boolean,
+): string {
+  let fullPath: string;
+  let isDirectory: boolean;
 
-  if (file.isDirectory) return normalizedPath;
-
+  if (typeof fileOrPath === 'string') {
+    fullPath = fileOrPath;
+    isDirectory = !!isDir;
+  } else {
+    fullPath = fileOrPath.fullPath;
+    isDirectory = fileOrPath.isDirectory;
+  }
+  const normalizedPath = fullPath.replace(/\\/g, '/');
+  if (isDirectory) {
+    return normalizedPath;
+  }
   const parts = normalizedPath.split('/');
-  parts.pop();
+  parts.pop(); // remove file name
   return parts.join('/') || '/';
-};
+}

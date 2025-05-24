@@ -1,6 +1,6 @@
 import style from './tabBar.module.scss';
 import { TabActionType, TabBarState } from '@renderer/store/layout/models';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { IAppState } from '@renderer/store';
 import FileIcon from '@renderer/components/ui/FileIcon';
@@ -9,6 +9,7 @@ import classNames from 'classnames';
 import { setTabAction } from '@renderer/store/layout/slice';
 import ScrollBarVirtual from '@renderer/components/ui/ScrollBarVirtual';
 import ScrollHorizontal from '@renderer/components/ui/ScrollHorizontal';
+import ClearContentEditorEvent from '@renderer/events/editor/ClearContentEditorEvent';
 
 interface ITabBarProps {
   tabs: TabBarState;
@@ -18,6 +19,12 @@ interface ITabBarProps {
 
 const TabBar: FC<ITabBarProps> = (props) => {
   const { tabs, currentTab, setTabAction } = props;
+
+  useEffect(() => {
+    if (Object.values(tabs).length === 0) {
+      ClearContentEditorEvent.dispatch();
+    }
+  }, [tabs]);
 
   return (
     <div className={style.container}>
@@ -36,6 +43,15 @@ const TabBar: FC<ITabBarProps> = (props) => {
                 payload: tab.id,
               })
             }
+            onMouseDown={(e) => {
+              if (e.button === 1) {
+                e.preventDefault();
+                setTabAction({
+                  type: TabActionType.CLOSE,
+                  payload: tab.id,
+                });
+              }
+            }}
           >
             <div className={style.tabItemContent}>
               <FileIcon name={tab.name} width={20} height={20} />

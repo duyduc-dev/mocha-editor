@@ -33,20 +33,36 @@ export function getDirectoryTreeWithParent(dirPath: string): FileNode {
 }
 
 export function readFile(filePath: string): Promise<string> {
-  return new Promise((resolve) => {
-    resolve(fs.readFileSync(filePath, 'utf8'));
-  });
+  return fs.promises.readFile(filePath, { encoding: 'utf8' });
 }
 
-export function writeFile(
+export async function existsFile(
+  dirPath: string,
+  fileName?: string,
+): Promise<boolean> {
+  let filePath: string;
+  if (fileName) {
+    filePath = path.join(dirPath, fileName);
+  } else {
+    filePath = dirPath;
+  }
+  console.log('__filePath__', { filePath, fileName });
+  return new Promise((resolve) => resolve(fs.existsSync(filePath)));
+}
+
+export async function writeFile(
   dir: string,
   fileName: string,
   content = '',
-): Promise<void> {
-  return new Promise(() => {
-    fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, fileName), content);
-  });
+): Promise<string> {
+  await fs.promises.mkdir(dir, { recursive: true });
+  const pathNewFile = path.join(dir, fileName);
+  await fs.promises.writeFile(pathNewFile, content);
+  return pathNewFile;
+}
+
+export function deleteFile(filePath: string): Promise<void> {
+  return fs.promises.unlink(filePath);
 }
 
 export async function openDialog(mainWindow: BrowserWindow) {

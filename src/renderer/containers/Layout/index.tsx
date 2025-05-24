@@ -7,6 +7,7 @@ import BottomBar from '@renderer/containers/Layout/BottomBar';
 import { Mosaic } from 'react-mosaic-component';
 import { ReactNode, useMemo } from 'react';
 import TabBar from '@renderer/containers/Layout/TabBar';
+import Terminal from '@renderer/components/ui/Terminal';
 
 interface LayoutProps {
   children: ReactNode;
@@ -26,6 +27,7 @@ const Layout = ({ children }: LayoutProps) => {
           <div className={styles.children}>{children}</div>
         </div>
       ),
+      terminal: <div></div>,
     }),
     [],
   );
@@ -48,7 +50,11 @@ const Layout = ({ children }: LayoutProps) => {
               initialValue={{
                 direction: 'row',
                 first: 'sidebar',
-                second: 'content',
+                second: {
+                  direction: 'column',
+                  first: 'content',
+                  second: 'terminal',
+                },
                 splitPercentage: 20,
               }}
             />

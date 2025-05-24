@@ -1,5 +1,5 @@
 import { FileNode } from '@shared/types/files';
-import { FC, memo, MouseEventHandler } from 'react';
+import { CSSProperties, FC, memo, MouseEventHandler } from 'react';
 import styles from './fileItem.module.scss';
 import { colors } from '@renderer/utilities/colors';
 import FileIcon from '@renderer/components/ui/FileIcon';
@@ -12,10 +12,12 @@ interface IFileItem {
   file: FileNode;
   isExpand?: boolean;
   onContextMenu?: MouseEventHandler<HTMLDivElement>;
+  className?: string;
+  style?: CSSProperties;
 }
 
 const FileItem: FC<IFileItem> = (props) => {
-  const { file, isExpand, onContextMenu } = props;
+  const { file, isExpand, onContextMenu, className, style } = props;
   const dispatch = useAppDispatch();
 
   const handleDoubleClick = () => {
@@ -38,7 +40,9 @@ const FileItem: FC<IFileItem> = (props) => {
       className={classNames(
         styles.container,
         file.name.startsWith('.') && styles.fileHide,
+        className,
       )}
+      style={style}
       key={`${file.fullPath}-${file.name}`}
       onDoubleClick={handleDoubleClick}
       onContextMenu={onContextMenu}

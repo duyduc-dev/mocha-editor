@@ -1,5 +1,7 @@
 import { IMochaHandler } from '@main/types/IMochaHandler';
 import {
+  deleteFile,
+  existsFile,
   getDirectoryTree,
   getDirectoryTreeWithParent,
   openDialog,
@@ -8,6 +10,7 @@ import {
 } from '@main/features/files';
 import { MochaHandleKey } from '@shared/types/mochaHandleKey';
 import { string } from 'zod';
+import path from 'path';
 
 export const getDirectoryTreeHandler: IMochaHandler = {
   type: 'handler',
@@ -41,6 +44,19 @@ export const writeFileHandler: IMochaHandler = {
   type: 'handler',
   name: MochaHandleKey.WRITE_FILE,
   run: async (_, __, dir: string, fileName: string, content = '') => {
-    writeFile(dir, fileName, content);
+    return await writeFile(dir, fileName, content);
   },
+};
+
+export const existsFileHandler: IMochaHandler = {
+  type: 'handler',
+  name: MochaHandleKey.EXIST_FILE,
+  run: async (_, __, dir: string, fileName?: string) =>
+    existsFile(dir, fileName),
+};
+
+export const deleteFileHandler: IMochaHandler = {
+  type: 'handler',
+  name: MochaHandleKey.DELETE_FILE,
+  run: async (_, __, filePath: string) => deleteFile(filePath),
 };

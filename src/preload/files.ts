@@ -25,4 +25,8 @@ export const fileSystem: IMochaFileSystemApi = {
       content,
     );
   },
+  existsFile: (filePath, fileName) =>
+    ipcRenderer.invoke(MochaHandleKey.EXIST_FILE, filePath, fileName),
+  deleteFile: (filePath) =>
+    ipcRenderer.invoke(MochaHandleKey.DELETE_FILE, filePath),
 };

@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { FC, memo, useMemo } from 'react';
 import CodeMirror, {
   EditorView,
   ReactCodeMirrorProps,
@@ -52,4 +52,4 @@ const CodeEditor: FC<ICodeEditorProps> = (props) => {
   );
 };
 
-export default CodeEditor;
+export default memo(CodeEditor);

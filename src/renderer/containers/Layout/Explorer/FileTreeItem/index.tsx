@@ -4,26 +4,18 @@ import Collapse from '@renderer/components/ui/Collapse';
 import ListRender from '@renderer/components/ui/ListRender';
 import FileItem from '@renderer/containers/Layout/Explorer/FileItem';
 import styles from './fileTreeItem.module.scss';
-import { useContextMenu } from 'react-contexify';
-import { FILE_CONTEXT_MENU_ID } from '../FileExploreTree/FileContextMenu';
+import { showFileContextMenu } from '../FileExploreTree/FileContextMenu';
 
 interface IFileTreeItem {
   file: FileNode;
+  index?: number;
 }
 
 const FileTreeItem: FC<IFileTreeItem> = (props) => {
-  const { file } = props;
-  const { show } = useContextMenu({
-    id: FILE_CONTEXT_MENU_ID,
-  });
+  const { file, index = 1 } = props;
 
   const handleContextMenu = (event: any) =>
-    show({
-      event: event,
-      props: {
-        file,
-      },
-    });
+    showFileContextMenu(event, { file });
 
   return (
     <div className={styles.container} key={`${file.fullPath}-${file.name}`}>
@@ -34,7 +26,9 @@ const FileTreeItem: FC<IFileTreeItem> = (props) => {
           renderLabel={({ item, isExpand }) => (
             <FileItem
               file={item}
+              className={styles.fileItem}
               isExpand={isExpand}
+              style={{ paddingLeft: `${index * 6}px` }}
               onContextMenu={handleContextMenu}
             />
           )}
@@ -48,7 +42,7 @@ const FileTreeItem: FC<IFileTreeItem> = (props) => {
                     }
                     data={item.children}
                     renderItem={(childItem) => (
-                      <FileTreeItem file={childItem} />
+                      <FileTreeItem file={childItem} index={index + 1} />
                     )}
                   />
                 </Suspense>
@@ -57,7 +51,12 @@ const FileTreeItem: FC<IFileTreeItem> = (props) => {
           )}
         />
       ) : (
-        <FileItem file={file} onContextMenu={handleContextMenu} />
+        <FileItem
+          file={file}
+          onContextMenu={handleContextMenu}
+          className={styles.fileItem}
+          style={{ paddingLeft: `${index * 6}px` }}
+        />
       )}
     </div>
   );

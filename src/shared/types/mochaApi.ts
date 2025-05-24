@@ -18,11 +18,11 @@ export interface IMochaFileSystemApi {
   getDirectoryTreeWithParent: (dirPath: string) => Promise<FileNode>;
   readFile: (filePath: string) => Promise<string>;
   openDialog: () => Promise<string>;
-  writeFile: (
-    dir: string,
-    fileName: string,
-    content?: string,
-  ) => Promise<string>;
+  existsFile(dirPath: string, fileName?: string): Promise<boolean>;
+  writeFile: {
+    (dir: string, fileName: string, content?: string): Promise<string>;
+  };
+  deleteFile: (filePath: string) => Promise<void>;
 }
 
 export interface IMochaApi {
