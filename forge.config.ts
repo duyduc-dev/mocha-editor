@@ -10,13 +10,22 @@ import { FuseV1Options, FuseVersion } from '@electron/fuses';
 const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
+    icon: 'assets/mocha-2-mac',
+    name: 'MochaEditor'
   },
   rebuildConfig: {},
   makers: [
     new MakerSquirrel({}),
-    new MakerZIP({}, ['darwin']),
+    // new MakerZIP({}, ['darwin']),
     new MakerRpm({}),
     new MakerDeb({}),
+    {
+      name: '@electron-forge/maker-dmg',
+      config: {
+        format: 'ULFO',
+        icon: 'assets/mocha-2-mac.icns',
+      },
+    },
   ],
   plugins: [
     new VitePlugin({
