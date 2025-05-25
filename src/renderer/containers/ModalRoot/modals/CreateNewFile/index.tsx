@@ -2,7 +2,6 @@ import Modal from '@renderer/components/ui/Modal';
 import { FC, useState } from 'react';
 import { ModalItemProps } from '../../model';
 import styles from './createNewFile.module.scss';
-import { FileNode } from '@shared/types/files';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { getPathFolder } from '@renderer/utilities/files';
@@ -62,6 +61,8 @@ const CreateNewFileModal: FC<ModalItemProps<ModalType.CREATE_NEW_FILE>> = (
             name: data.filename,
             path: pathFile,
             type: TabBarType.EDITOR,
+            saved: true,
+            value: null,
           },
         }),
       );

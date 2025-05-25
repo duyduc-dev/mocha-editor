@@ -1,0 +1,15 @@
+@use '@renderer/styles/common';
+
+.container {
+  max-height: 60vh;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .list {
+    flex: 1;
+    max-height: 100%;
+    overflow-y: scroll;
+  }
+}

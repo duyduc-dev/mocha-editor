@@ -30,6 +30,8 @@ const FileItem: FC<IFileItem> = (props) => {
           name: file.name,
           path: file.fullPath,
           type: TabBarType.EDITOR,
+          saved: true,
+          value: null,
         },
       }),
     );

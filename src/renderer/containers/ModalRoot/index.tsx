@@ -7,6 +7,7 @@ import PortalRoot from '../PortalRoot';
 import { FileNode } from '@shared/types/files';
 import { ModalItemProps, ModalProps } from './model';
 import ConfirmDeleteFile from '@renderer/containers/ModalRoot/modals/ConfirmDeleteFile';
+import SearchFileNodes from '@renderer/containers/ModalRoot/modals/SearchFileNodes';
 
 type ModalDataProps = {
   [ModalType.CREATE_NEW_FILE]: {
@@ -17,6 +18,7 @@ type ModalDataProps = {
 const MODALS: Record<ModalType, ComponentType<ModalItemProps<any>>> = {
   [ModalType.CREATE_NEW_FILE]: CreateNewFileModal,
   [ModalType.CONFIRM_DELETE_FILE]: ConfirmDeleteFile,
+  [ModalType.SEARCH_FILE_NODES]: SearchFileNodes,
 };
 
 const ModalRoot = () => {
