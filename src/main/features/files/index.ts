@@ -46,7 +46,6 @@ export async function existsFile(
   } else {
     filePath = dirPath;
   }
-  console.log('__filePath__', { filePath, fileName });
   return new Promise((resolve) => resolve(fs.existsSync(filePath)));
 }
 

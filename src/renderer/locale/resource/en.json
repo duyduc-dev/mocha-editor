@@ -1,5 +1,8 @@
 {
   "newFile": "New file",
   "removeFromWorkspace": "Remove from workspace",
-  "delete": "Delete"
+  "delete": "Delete",
+  "deleteFile": "Delete file",
+  "cancel": "Cancel",
+  "deleteThisFileCannotUndone": "Are you sure you want to delete <b>({{filename}})</b>? This action cannot be undone."
 }

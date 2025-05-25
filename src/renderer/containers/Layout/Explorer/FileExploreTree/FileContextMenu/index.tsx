@@ -14,9 +14,6 @@ import { fileContextMenus, FileCxtMenuType } from './constants';
 import { useLocale } from '@renderer/locale';
 import { FileNode } from '@shared/types/files';
 import { useCallback } from 'react';
-import { refetchExplorerSystem } from '@renderer/store/explorer/thunk';
-import { setTabAction } from '@renderer/store/layout/slice';
-import { TabActionType } from '@renderer/store/layout/models';
 
 export const FILE_CONTEXT_MENU_ID = 'FileContextMenu';
 
@@ -47,14 +44,12 @@ const FileContextMenu = () => {
         break;
       case FileCxtMenuType.DELETE_FILE: {
         if (e.props?.file) {
-          await window.mochaApi.fileSystem.deleteFile(e.props?.file.fullPath);
           dispatch(
-            setTabAction({
-              type: TabActionType.CLOSE,
-              payload: e.props?.file.fullPath,
+            showModal({
+              type: ModalType.CONFIRM_DELETE_FILE,
+              data: e.props,
             }),
           );
-          await dispatch(refetchExplorerSystem());
         }
         break;
       }

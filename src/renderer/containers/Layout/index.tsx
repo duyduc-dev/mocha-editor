@@ -27,7 +27,7 @@ const Layout = ({ children }: LayoutProps) => {
           <div className={styles.children}>{children}</div>
         </div>
       ),
-      terminal: <div></div>,
+      // terminal: <div></div>,
     }),
     [],
   );
@@ -50,11 +50,7 @@ const Layout = ({ children }: LayoutProps) => {
               initialValue={{
                 direction: 'row',
                 first: 'sidebar',
-                second: {
-                  direction: 'column',
-                  first: 'content',
-                  second: 'terminal',
-                },
+                second: 'content',
                 splitPercentage: 20,
               }}
             />

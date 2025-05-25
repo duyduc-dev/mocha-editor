@@ -1,4 +1,29 @@
 @use '@renderer/styles/common';
 
 .container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 360px;
+
+  .description {
+    line-height: 1.5;
+  }
+
+  .btnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 8px;
+
+    .deleteBtn {
+      color: common.$color-red-500;
+    }
+  }
+
+  .title,
+  .bold {
+    color: common.$color-red-500;
+  }
 }

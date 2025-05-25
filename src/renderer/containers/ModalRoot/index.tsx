@@ -5,7 +5,8 @@ import { useAppDispatch, useAppSelector } from '@renderer/store/common';
 import { closeModal } from '@renderer/store/modal/slice';
 import PortalRoot from '../PortalRoot';
 import { FileNode } from '@shared/types/files';
-import { ModalProps } from './model';
+import { ModalItemProps, ModalProps } from './model';
+import ConfirmDeleteFile from '@renderer/containers/ModalRoot/modals/ConfirmDeleteFile';
 
 type ModalDataProps = {
   [ModalType.CREATE_NEW_FILE]: {
@@ -13,8 +14,9 @@ type ModalDataProps = {
   };
 };
 
-const MODALS: Record<ModalType, ComponentType<{ modalProps: ModalProps }>> = {
+const MODALS: Record<ModalType, ComponentType<ModalItemProps<any>>> = {
   [ModalType.CREATE_NEW_FILE]: CreateNewFileModal,
+  [ModalType.CONFIRM_DELETE_FILE]: ConfirmDeleteFile,
 };
 
 const ModalRoot = () => {

@@ -12,6 +12,7 @@ const Button: FC<IButtonProps> = (props) => {
   const { className, children, onClick } = props;
   return (
     <button
+      tabIndex={0}
       onClick={onClick}
       className={classNames(styles.container, className)}
     >

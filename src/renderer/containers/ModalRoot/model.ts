@@ -14,9 +14,10 @@ export interface ModalItemProps<T extends ModalType = ModalType> {
 }
 
 export type ModalDataProps = {
-  [ModalType.CREATE_NEW_FILE]: ModalDataCreateNewFile;
+  [ModalType.CREATE_NEW_FILE]: ModalDataFile;
+  [ModalType.CONFIRM_DELETE_FILE]: ModalDataFile;
 };
 
-interface ModalDataCreateNewFile {
+interface ModalDataFile {
   file: FileNode;
 }

@@ -3,6 +3,7 @@
 .container {
   width: auto;
   outline: none;
+  tab-index: 0;
   border: 1px solid transparent;
   border-radius: 4px;
   background-color: common.$color-neutral-800;

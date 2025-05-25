@@ -40,7 +40,8 @@
     "prettier/prettier": ["error"],
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/no-empty-object-type": "off"
+    "@typescript-eslint/no-empty-object-type": "off",
+    "import/namespace": "off"
   },
   "parser": "@typescript-eslint/parser"
 }
