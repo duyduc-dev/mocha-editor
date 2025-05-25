@@ -43,6 +43,14 @@ const createWindow = () => {
     mainWindow.show();
   });
 
+  mainWindow.on('blur', () => {
+    mainWindow.webContents.send('blur-window');
+  });
+
+  mainWindow.on('focus', () => {
+    mainWindow.webContents.send('focus-window');
+  });
+
   return mainWindow;
 };
 

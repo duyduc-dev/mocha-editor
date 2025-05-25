@@ -15,7 +15,7 @@ interface ILocale {
 
 type InterpolationValues = Record<
   string,
-  string | ((props: { children: ReactNode }) => ReactNode)
+  string | ((props: { children: ReactNode; key: string }) => ReactNode)
 >;
 
 const resources = {
@@ -40,7 +40,7 @@ function createTranslator(locale: Record<string, string>) {
         const children = parseTranslation(tagContent, values);
 
         if (typeof Component === 'function') {
-          result.push(Component({ children }));
+          result.push(Component({ children, key: tag }));
         } else {
           // fallback if no component or invalid
           result.push(<>{children}</>);

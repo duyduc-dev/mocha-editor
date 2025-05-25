@@ -11,8 +11,6 @@ export const mochaWindowApi: IMochaWindowApi = {
     ipcRenderer.send(MochaHandleKey.WINDOW_TOGGLE_MAXIMIZE);
   },
   close: function (): void {
-    console.log('test');
-
     ipcRenderer.send(MochaHandleKey.WINDOW_CLOSE);
   },
 };

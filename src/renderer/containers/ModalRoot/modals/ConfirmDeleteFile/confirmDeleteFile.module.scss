@@ -18,6 +18,9 @@
     margin-top: 8px;
 
     .deleteBtn {
+      display: flex;
+      align-items: center;
+      gap: 4px;
       color: common.$color-red-500;
     }
   }

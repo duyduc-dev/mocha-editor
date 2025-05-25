@@ -6,15 +6,17 @@ interface IButtonProps {
   className?: string;
   children: ReactNode;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 const Button: FC<IButtonProps> = (props) => {
-  const { className, children, onClick } = props;
+  const { disabled, className, children, onClick } = props;
   return (
     <button
       tabIndex={0}
       onClick={onClick}
       className={classNames(styles.container, className)}
+      disabled={disabled}
     >
       {children}
     </button>

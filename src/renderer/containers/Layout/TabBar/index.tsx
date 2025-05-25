@@ -1,15 +1,13 @@
 import style from './tabBar.module.scss';
 import { TabActionType, TabBarState } from '@renderer/store/layout/models';
-import { FC, useEffect } from 'react';
+import { FC, MouseEvent } from 'react';
 import { connect } from 'react-redux';
 import { IAppState } from '@renderer/store';
 import FileIcon from '@renderer/components/ui/FileIcon';
-import { X } from 'lucide-react';
+import { CircleDot, X } from 'lucide-react';
 import classNames from 'classnames';
 import { setTabAction } from '@renderer/store/layout/slice';
-import ScrollBarVirtual from '@renderer/components/ui/ScrollBarVirtual';
 import ScrollHorizontal from '@renderer/components/ui/ScrollHorizontal';
-import ClearContentEditorEvent from '@renderer/events/editor/ClearContentEditorEvent';
 
 interface ITabBarProps {
   tabs: TabBarState;
@@ -20,11 +18,26 @@ interface ITabBarProps {
 const TabBar: FC<ITabBarProps> = (props) => {
   const { tabs, currentTab, setTabAction } = props;
 
-  useEffect(() => {
-    if (Object.values(tabs).length === 0) {
-      ClearContentEditorEvent.dispatch();
+  const handleActiveTab = (tabId: string) =>
+    setTabAction({
+      type: TabActionType.ACTIVE,
+      payload: tabId,
+    });
+
+  const handleMouseDown = (e: MouseEvent<HTMLDivElement>, tabId: string) => {
+    if (e.button === 1) {
+      handleCloseTab(e, tabId);
     }
-  }, [tabs]);
+  };
+
+  const handleCloseTab = (e: MouseEvent<HTMLDivElement>, tabId: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setTabAction({
+      type: TabActionType.CLOSE,
+      payload: tabId,
+    });
+  };
 
   return (
     <div className={style.container}>
@@ -37,35 +50,19 @@ const TabBar: FC<ITabBarProps> = (props) => {
             className={classNames(style.tabItem, {
               [style.active]: tab.id === currentTab,
             })}
-            onClick={() =>
-              setTabAction({
-                type: TabActionType.ACTIVE,
-                payload: tab.id,
-              })
-            }
-            onMouseDown={(e) => {
-              if (e.button === 1) {
-                e.preventDefault();
-                setTabAction({
-                  type: TabActionType.CLOSE,
-                  payload: tab.id,
-                });
-              }
-            }}
+            onClick={() => handleActiveTab(tab.id)}
+            onMouseDown={(e) => handleMouseDown(e, tab.id)}
           >
             <div className={style.tabItemContent}>
               <FileIcon name={tab.name} width={20} height={20} />
               <p>{tab.name}</p>
             </div>
+            <div className={style.unsaveDot}>
+              {!tab.saved && <CircleDot size={16} />}
+            </div>
             <div
               className={style.iconContainer}
-              onClick={(e) => {
-                e.stopPropagation();
-                setTabAction({
-                  type: TabActionType.CLOSE,
-                  payload: tab.id,
-                });
-              }}
+              onClick={(e) => handleCloseTab(e, tab.id)}
             >
               <X size={16} />
             </div>

@@ -1,23 +1,39 @@
 import CodeEditor from '@renderer/components/ui/CodeEditor';
 import styles from './styles.module.scss';
-import { useAppSelector } from '@renderer/store/common';
-import { selectCurrentFile } from '@renderer/store/layout/selector';
+import { useAppDispatch, useAppSelector } from '@renderer/store/common';
+import { selectCurrentTab } from '@renderer/store/layout/selector';
 import { useEffect, useState } from 'react';
 import { Variables } from '@renderer/utilities/variable';
-import { getPathFolder } from '@renderer/utilities/files';
-import { debounce } from 'lodash';
-import ClearContentEditorEvent from '@renderer/events/editor/ClearContentEditorEvent';
+import { setTabAction } from '@renderer/store/layout/slice';
+import { TabActionType } from '@renderer/store/layout/models';
+import useFilesOpeningHandler from '@renderer/components/hooks/useFilesOpeningHandler';
 
 const Editor = () => {
-  const currentFile = useAppSelector(selectCurrentFile);
-  const [contentFile, setContentFile] = useState<string>();
+  const currentTab = useAppSelector(selectCurrentTab);
+  const dispatch = useAppDispatch();
   const [height, setHeight] = useState(Variables.mainContentViewHeight);
 
-  useEffect(handleReadFile, [currentFile]);
+  const setTempContentFile = (value: string | null, saved?: boolean) => {
+    if (!currentTab) return;
+    dispatch(
+      setTabAction({
+        type: TabActionType.SET_CONTENT_VALUE,
+        payload: {
+          id: currentTab.id,
+          value: value,
+          saved,
+        },
+      }),
+    );
+  };
+
+  useFilesOpeningHandler();
+
+  useEffect(handleReadFile, [currentTab]);
   function handleReadFile() {
-    if (currentFile)
-      window.mochaApi.fileSystem.readFile(currentFile.path).then((content) => {
-        setContentFile(content);
+    if (currentTab && currentTab.value === null)
+      window.mochaApi.fileSystem.readFile(currentTab.path).then((content) => {
+        setTempContentFile(content, true);
       });
   }
 
@@ -32,33 +48,15 @@ const Editor = () => {
     };
   }
 
-  useEffect(handleEventClearContent, []);
-  function handleEventClearContent() {
-    return ClearContentEditorEvent.on(() => {
-      setContentFile('');
-    });
-  }
-
-  const DELAY_SAVE = 1000;
-  const updateFileSystemSync = debounce((value: string) => {
-    if (currentFile) {
-      window.mochaApi.fileSystem.writeFile(
-        getPathFolder(currentFile.path, false),
-        currentFile?.name,
-        value,
-      );
-    }
-  }, DELAY_SAVE);
   const handleChangeFile = (value: string) => {
-    setContentFile(value);
-    updateFileSystemSync(value);
+    setTempContentFile(value);
   };
 
   return (
     <div className={styles.container}>
       <CodeEditor
-        value={contentFile}
-        filename={currentFile?.path}
+        value={currentTab?.value || ''}
+        filename={currentTab?.path}
         height={`${height}px`}
         onChange={handleChangeFile}
       />

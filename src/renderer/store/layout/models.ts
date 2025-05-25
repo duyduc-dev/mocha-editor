@@ -18,6 +18,8 @@ export interface ITabBarEditorLayout {
   name: string;
   type: TabBarType.EDITOR;
   path: string;
+  value: string | null;
+  saved: boolean;
 }
 
 export type ITabBarLayout = ITabBarEditorLayout & {
@@ -28,6 +30,8 @@ export enum TabActionType {
   CLOSE = 'close',
   ACTIVE = 'active',
   ADD = 'add',
+  SET_CONTENT_VALUE = 'set_content_value',
+  SAVED_FILE = 'saved_file',
 }
 
 interface ITabActionAdd {
@@ -45,7 +49,26 @@ interface ITabActionClose {
   payload: string;
 }
 
+interface ITabActionSetContentValue {
+  type: TabActionType.SET_CONTENT_VALUE;
+  payload: {
+    id: string;
+    value: string | null;
+    saved?: boolean;
+  };
+}
+
+interface ITabActionSetSaveFile {
+  type: TabActionType.SAVED_FILE;
+  payload: {
+    id: string;
+    saved: boolean;
+  };
+}
+
 export type ITabActionPayload =
   | ITabActionAdd
   | ITabActionActive
-  | ITabActionClose;
+  | ITabActionClose
+  | ITabActionSetContentValue
+  | ITabActionSetSaveFile;

@@ -26,8 +26,11 @@ export interface IMochaFileSystemApi {
 }
 
 export interface IMochaApi {
-  sendMessage: <T = any>(channel: string, data: T) => void;
-  onMessage: <T = any>(channel: string, callback: (data: T) => void) => void;
+  sendMessage: <T extends any[]>(channel: string, ...data: T) => void;
+  onMessage: <T extends any[]>(
+    channel: string,
+    callback: (...data: T) => void,
+  ) => () => void;
   fileSystem: IMochaFileSystemApi;
   window: IMochaWindowApi;
 }

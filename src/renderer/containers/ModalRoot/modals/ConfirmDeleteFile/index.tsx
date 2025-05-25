@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, useState } from 'react';
 import styles from './confirmDeleteFile.module.scss';
 import { ModalItemProps } from '@renderer/containers/ModalRoot/model';
 import { ModalType } from '@renderer/containers/ModalRoot/constants';
@@ -9,6 +9,7 @@ import { useAppDispatch } from '@renderer/store/common';
 import { setTabAction } from '@renderer/store/layout/slice';
 import { TabActionType } from '@renderer/store/layout/models';
 import { refetchExplorerSystem } from '@renderer/store/explorer/thunk';
+import { BounceLoader } from 'react-spinners';
 
 const ConfirmDeleteFile: FC<ModalItemProps<ModalType.CONFIRM_DELETE_FILE>> = (
   props,
@@ -20,17 +21,23 @@ const ConfirmDeleteFile: FC<ModalItemProps<ModalType.CONFIRM_DELETE_FILE>> = (
 
   const { t } = useLocale();
   const dispatch = useAppDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleDelete = async () => {
-    await window.mochaApi.fileSystem.deleteFile(file.fullPath);
-    dispatch(
-      setTabAction({
-        type: TabActionType.CLOSE,
-        payload: file.fullPath,
-      }),
-    );
-    await dispatch(refetchExplorerSystem());
-    onClose();
+    setIsLoading(true);
+    try {
+      await window.mochaApi.fileSystem.deleteFile(file.fullPath);
+      dispatch(
+        setTabAction({
+          type: TabActionType.CLOSE,
+          payload: file.fullPath,
+        }),
+      );
+      await dispatch(refetchExplorerSystem());
+    } finally {
+      onClose();
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -40,12 +47,21 @@ const ConfirmDeleteFile: FC<ModalItemProps<ModalType.CONFIRM_DELETE_FILE>> = (
         <div className={styles.description}>
           {t('deleteThisFileCannotUndone', {
             filename: file.name,
-            b: ({ children }) => <b className={styles.bold}>{children}</b>,
+            b: ({ children, key }) => (
+              <b key={key} className={styles.bold}>
+                {children}
+              </b>
+            ),
           })}
         </div>
         <div className={styles.btnContainer}>
           <Button onClick={onClose}>{t`cancel`}</Button>
-          <Button className={styles.deleteBtn} onClick={handleDelete}>
+          <Button
+            disabled={isLoading}
+            className={styles.deleteBtn}
+            onClick={handleDelete}
+          >
+            {isLoading && <BounceLoader size={18} color={'#fff'} />}
             {t`delete`}
           </Button>
         </div>
