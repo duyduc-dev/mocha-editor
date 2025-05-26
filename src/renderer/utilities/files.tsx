@@ -47,38 +47,6 @@ export function getPathFolder(
   return parts.join('/') || '/';
 }
 
-export function searchFileNodesIterative(
-  nodes: FileNode[],
-  query: string,
-  exclude: string[] = [],
-): FileNode[] {
-  const results: FileNode[] = [];
-  const stack: FileNode[] = [...nodes];
-
-  while (stack.length > 0) {
-    const node = stack.pop()!;
-    if (node.name === 'node_modules' || exclude.includes(node.name)) {
-      continue;
-    }
-    if (
-      node.name.toLowerCase().includes(query.toLowerCase()) ||
-      node.fullPath.toLowerCase().includes(query.toLowerCase())
-    ) {
-      results.push({
-        name: node.name,
-        fullPath: node.fullPath,
-        isDirectory: node.isDirectory,
-      });
-    }
-
-    if (node.isDirectory && node.children?.length) {
-      stack.push(...node.children);
-    }
-  }
-
-  return results;
-}
-
 export function highlightMatch(text: string, query: string) {
   const regex = new RegExp(`(${query})`, 'gi');
   const parts = text.split(regex);
@@ -97,44 +65,35 @@ export function highlightMatch(text: string, query: string) {
   );
 }
 
+type FileFilter = (node: FileNode) => boolean;
 export const flattenFileTree = (
   nodes: FileNode[],
+  filter?: FileFilter,
   exclude: string[] = [],
 ): FileNode[] => {
   const result: FileNode[] = [];
-  const stack: FileNode[] = [...nodes];
+  const excludeSet = new Set(['node_modules', ...exclude]);
 
-  while (stack.length > 0) {
-    const node = stack.pop()!;
-    if (node.name === 'node_modules' || exclude.includes(node.name)) {
-      continue;
+  const traverse = (node: FileNode) => {
+    if (node.isDirectory) {
+      if (excludeSet.has(node.name)) return;
+      (node.children || []).forEach(traverse);
+    } else if (!filter || filter(node)) {
+      result.push(node);
     }
-    result.push(node);
-    if (node.isDirectory && node.children?.length) {
-      stack.push(...node.children);
-    }
-  }
+  };
 
-  return result;
+  nodes.forEach(traverse);
+  return result.sort((a, b) =>
+    a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
+  );
 };
 
-export const searchFileNodesWithFuse = (
-  nodes: FileNode[],
-  query: string,
-  exclude: string[] = [],
-) => {
-  const allFiles = flattenFileTree(nodes, exclude); // Include folders if needed
-  const fuse = new Fuse(allFiles, {
-    keys: [
-      {
-        name: 'fullPath',
-        getFn: (node) => node.fullPath,
-      },
-    ],
-    threshold: 0.3,
-    minMatchCharLength: 2,
-  });
+export const getPathBaseOnRoot = (workspacePath: string, pathFile: string) => {
+  let path = pathFile;
+  if (pathFile.includes(workspacePath)) {
+    path = pathFile.replace(workspacePath, '');
+  }
 
-  const result = fuse.search(query).map((r) => r.item);
-  return result;
+  return path.startsWith('\\') ? path.replace('\\', '') : path;
 };

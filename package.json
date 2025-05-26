@@ -75,6 +75,7 @@
     "devicons-react": "^1.4.1",
     "electron-squirrel-startup": "^1.0.1",
     "fuse.js": "^7.1.0",
+    "hooks-react-custom": "^2.2.7",
     "lodash": "^4.17.21",
     "lucide-react": "^0.509.0",
     "normalize.css": "^8.0.1",

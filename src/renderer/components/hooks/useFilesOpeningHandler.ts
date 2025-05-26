@@ -1,9 +1,13 @@
 import { useAppDispatch, useAppSelector } from '@renderer/store/common';
-import { selectTabBars } from '@renderer/store/layout/selector';
+import {
+  selectCurrentTab,
+  selectTabBars,
+} from '@renderer/store/layout/selector';
 import { useEffect } from 'react';
 import { getPathFolder } from '@renderer/utilities/files';
 import { setTabAction } from '@renderer/store/layout/slice';
 import { TabActionType } from '@renderer/store/layout/models';
+import { useKeyPressHandler } from 'hooks-react-custom';
 
 const useHandleSaveFileOnBlurWindow = () => {
   const tabBars = useAppSelector(selectTabBars);
@@ -69,9 +73,58 @@ const useLoadFilesOpeningOnFocusWindow = () => {
   }
 };
 
+const useSaveFileHandler = () => {
+  const currentTab = useAppSelector(selectCurrentTab);
+  const dispatch = useAppDispatch();
+
+  const saveCurrentFile = async () => {
+    if (currentTab && !currentTab.saved) {
+      try {
+        window.mochaApi.fileSystem.writeFile(
+          getPathFolder(currentTab.path, false),
+          currentTab.name,
+          currentTab.value || '',
+        );
+        console.log(`[${currentTab.name} saved]`);
+        dispatch(
+          setTabAction({
+            type: TabActionType.SAVED_FILE,
+            payload: {
+              id: currentTab.id,
+              saved: true,
+            },
+          }),
+        );
+      } catch (error) {
+        console.log(`[${currentTab.name} not saved]`, error);
+      }
+    }
+  };
+
+  const readCurrentFile = () =>
+    currentTab &&
+    window.mochaApi.fileSystem.readFile(currentTab.path).then((content) => {
+      dispatch(
+        setTabAction({
+          type: TabActionType.SET_CONTENT_VALUE,
+          payload: {
+            id: currentTab.id,
+            value: content,
+            saved: true,
+          },
+        }),
+      );
+    });
+
+  useKeyPressHandler('ctrl.s', async () => {
+    saveCurrentFile().then(readCurrentFile);
+  });
+};
+
 const useFilesOpeningHandler = () => {
   useHandleSaveFileOnBlurWindow();
   useLoadFilesOpeningOnFocusWindow();
+  useSaveFileHandler();
 };
 
 export default useFilesOpeningHandler;

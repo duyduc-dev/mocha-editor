@@ -4,16 +4,10 @@ import CreateNewFileModal from './modals/CreateNewFile';
 import { useAppDispatch, useAppSelector } from '@renderer/store/common';
 import { closeModal } from '@renderer/store/modal/slice';
 import PortalRoot from '../PortalRoot';
-import { FileNode } from '@shared/types/files';
-import { ModalItemProps, ModalProps } from './model';
+import { ModalItemProps } from './model';
 import ConfirmDeleteFile from '@renderer/containers/ModalRoot/modals/ConfirmDeleteFile';
 import SearchFileNodes from '@renderer/containers/ModalRoot/modals/SearchFileNodes';
-
-type ModalDataProps = {
-  [ModalType.CREATE_NEW_FILE]: {
-    file: FileNode;
-  };
-};
+import { useKeyPressHandler } from 'hooks-react-custom';
 
 const MODALS: Record<ModalType, ComponentType<ModalItemProps<any>>> = {
   [ModalType.CREATE_NEW_FILE]: CreateNewFileModal,
@@ -26,8 +20,10 @@ const ModalRoot = () => {
   const modal = useAppSelector((state) => state.modal);
 
   const handleCloseModal = () => {
-    dispatch(closeModal());
+    if (modal.type) dispatch(closeModal());
   };
+
+  useKeyPressHandler('esc', handleCloseModal);
 
   if (!modal.type) return null;
   const ModalComponent = MODALS[modal.type];

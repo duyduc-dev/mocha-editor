@@ -3,13 +3,63 @@
 .container {
   max-height: 60vh;
   min-height: 60vh;
+  width: 500px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 
+  .formSearch {
+    width: 100%;
+
+    .inputSearch {
+      width: 100%;
+      color: #fff;
+      outline: 0;
+      border: 1px solid transparent;
+      padding: 8px 16px;
+      border-radius: 8px;
+      width: 100%;
+      background-color: common.$color-neutral-800;
+    }
+  }
+
+  .title {
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 8px;
+  }
+
   .list {
     flex: 1;
     max-height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .item {
+      padding: 6px 8px;
+      margin-bottom: 4px;
+      transition: all 0.1s ease;
+      cursor: pointer;
+      border-radius: 8px;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .wrapName {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+    }
+    .filePath {
+      margin-top: 4px;
+      font-size: 12px;
+      opacity: 0.8;
+      white-space: normal;
+      word-wrap: break-word; /* For legacy browsers */
+      overflow-wrap: break-word; /* Standard */
+    }
   }
 }
