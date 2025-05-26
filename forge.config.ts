@@ -11,11 +11,10 @@ const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
     icon: 'assets/mocha-2-mac',
-    name: 'MochaEditor'
+    name: 'MochaEditor',
   },
   rebuildConfig: {},
   makers: [
-    new MakerSquirrel({}),
     // new MakerZIP({}, ['darwin']),
     new MakerRpm({}),
     new MakerDeb({}),
@@ -25,6 +24,10 @@ const config: ForgeConfig = {
         format: 'ULFO',
         icon: 'assets/mocha-2-mac.icns',
       },
+    },
+    {
+      name: '@electron-forge/maker-squirrel',
+      config: {},
     },
   ],
   plugins: [
