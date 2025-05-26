@@ -125,8 +125,14 @@ export const searchFileNodesWithFuse = (
 ) => {
   const allFiles = flattenFileTree(nodes, exclude); // Include folders if needed
   const fuse = new Fuse(allFiles, {
-    keys: ['name', 'fullPath'],
+    keys: [
+      {
+        name: 'fullPath',
+        getFn: (node) => node.fullPath,
+      },
+    ],
     threshold: 0.3,
+    minMatchCharLength: 2,
   });
 
   const result = fuse.search(query).map((r) => r.item);
