@@ -29,4 +29,7 @@ export const fileSystem: IMochaFileSystemApi = {
     ipcRenderer.invoke(MochaHandleKey.EXIST_FILE, filePath, fileName),
   deleteFile: (filePath) =>
     ipcRenderer.invoke(MochaHandleKey.DELETE_FILE, filePath),
+  createFolder: (dir, folderName) => {
+    return ipcRenderer.invoke(MochaHandleKey.CREATE_FOLDER, dir, folderName);
+  },
 };

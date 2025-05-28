@@ -1,6 +1,6 @@
 import { EventCore } from '@renderer/events/core/functions';
 
-export abstract class EventHandler<P = any, T = any> {
+export abstract class EventHandler<P = any, T = P> {
   abstract getEventName(): string;
 
   dispatch(data: P): void;

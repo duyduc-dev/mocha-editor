@@ -6,7 +6,7 @@ class DoubleShiftEvent extends EventHandler {
   private boundKeyDownHandler = this.onKeyDown.bind(this);
 
   getEventName(): string {
-    return 'DoubleShiftEvent';
+    return 'keydown:DoubleShiftEvent';
   }
 
   on(cb: (data: any) => void): () => void {

@@ -1,5 +1,6 @@
 import { IMochaHandler } from '@main/types/IMochaHandler';
 import {
+  createFolder,
   deleteFile,
   existsFile,
   getDirectoryTree,
@@ -59,4 +60,11 @@ export const deleteFileHandler: IMochaHandler = {
   type: 'handler',
   name: MochaHandleKey.DELETE_FILE,
   run: async (_, __, filePath: string) => deleteFile(filePath),
+};
+
+export const createFolderHandler: IMochaHandler = {
+  type: 'handler',
+  name: MochaHandleKey.CREATE_FOLDER,
+  run: async (_, __, filePath: string, name: string) =>
+    createFolder(filePath, name),
 };

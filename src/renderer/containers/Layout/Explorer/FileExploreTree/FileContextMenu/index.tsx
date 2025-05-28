@@ -35,10 +35,14 @@ const FileContextMenu = () => {
   const handleClick = useCallback(async (e: ItemParams<{ file: FileNode }>) => {
     switch (e.id) {
       case FileCxtMenuType.CREATE_NEW_FILE:
+      case FileCxtMenuType.CREATE_NEW_FOLDER:
         dispatch(
           showModal({
             type: ModalType.CREATE_NEW_FILE,
-            data: e.props,
+            data: {
+              file: e.props?.file,
+              newDir: e.id === FileCxtMenuType.CREATE_NEW_FOLDER,
+            },
           }),
         );
         break;

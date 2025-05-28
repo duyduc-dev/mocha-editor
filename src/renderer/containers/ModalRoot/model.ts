@@ -21,4 +21,5 @@ export type ModalDataProps = {
 
 interface ModalDataFile {
   file: FileNode;
+  newDir?: boolean;
 }

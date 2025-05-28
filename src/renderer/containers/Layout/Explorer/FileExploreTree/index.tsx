@@ -10,6 +10,7 @@ import { Suspense, useEffect } from 'react';
 import {
   fetchExplorerSystem,
   fetchPathDirectory,
+  refetchExplorerSystem,
 } from '@renderer/store/explorer/thunk';
 import Button from '@renderer/components/ui/Button';
 import ScrollBarVirtual from '@renderer/components/ui/ScrollBarVirtual';
@@ -21,6 +22,12 @@ const FileExploreTree = () => {
   const workspacePath = useAppSelector(selectWorkspaceFolder);
 
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    return window.mochaApi.onMessage('focus-window', () => {
+      dispatch(refetchExplorerSystem());
+    });
+  }, []);
 
   useEffect(() => {
     if (workspacePath) {

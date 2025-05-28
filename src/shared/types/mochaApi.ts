@@ -23,6 +23,7 @@ export interface IMochaFileSystemApi {
     (dir: string, fileName: string, content?: string): Promise<string>;
   };
   deleteFile: (filePath: string) => Promise<void>;
+  createFolder: (dir: string, folderName: string) => Promise<void>;
 }
 
 export interface IMochaApi {

@@ -1,5 +1,4 @@
 import { FileNode } from '@shared/types/files';
-import Fuse from 'fuse.js';
 
 export const sortDir = (nodes: FileNode[]): FileNode[] => {
   return nodes

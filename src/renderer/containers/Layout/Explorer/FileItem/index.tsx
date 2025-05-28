@@ -41,7 +41,8 @@ const FileItem: FC<IFileItem> = (props) => {
     <div
       className={classNames(
         styles.container,
-        file.name.startsWith('.') && styles.fileHide,
+        (file.name.startsWith('.') || file.name.startsWith('node_modules')) &&
+          styles.fileHide,
         className,
       )}
       style={style}

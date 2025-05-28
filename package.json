@@ -74,6 +74,8 @@
     "classnames": "^2.5.1",
     "devicons-react": "^1.4.1",
     "electron-squirrel-startup": "^1.0.1",
+    "file-type": "^21.0.0",
+    "fs-extra": "^11.3.0",
     "fuse.js": "^7.1.0",
     "hooks-react-custom": "^2.2.7",
     "lodash": "^4.17.21",

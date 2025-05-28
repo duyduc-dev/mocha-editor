@@ -30,6 +30,7 @@ type Props<T> = {
   disabled?: boolean;
   defaultExpandIndex?: number[];
   keyExtractor?: (item: T, index: number, thisData: Array<T>) => string;
+  each?: (item: T, index: number, thisData: Array<T>) => void;
 };
 
 export type CollapseRef = {
@@ -56,6 +57,7 @@ const Collapse = <T,>(props: Props<T>) => {
     renderContent,
     renderLabel,
     lazyExpand = [],
+    each,
   } = props;
 
   const [indexActives, setIndexActives] =
@@ -146,6 +148,7 @@ const Collapse = <T,>(props: Props<T>) => {
       containerClassName={className}
       itemClassName={itemClassName}
       keyExtractor={keyExtractor}
+      each={each}
       renderItem={(item, index, thisData) => (
         <>
           <div

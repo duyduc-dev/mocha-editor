@@ -1,8 +1,8 @@
-import fs from 'fs';
+import fs from 'fs-extra';
 import path from 'path';
 import { FileNode } from '@shared/types/files';
 import { BrowserWindow, dialog } from 'electron';
-import { BrowserWindowInstance } from '@main/utils/BrowserWindowInstance';
+import { readdir } from 'fs/promises';
 
 export function getDirectoryTree(dirPath: string): FileNode[] {
   const entries = fs.readdirSync(dirPath, { withFileTypes: true });
@@ -36,6 +36,11 @@ export function readFile(filePath: string): Promise<string> {
   return fs.promises.readFile(filePath, { encoding: 'utf8' });
 }
 
+export async function createFolder(dir: string, fileName: string) {
+  const filePath = path.join(dir, fileName);
+  await fs.ensureDir(filePath);
+}
+
 export async function existsFile(
   dirPath: string,
   fileName?: string,
@@ -60,8 +65,19 @@ export async function writeFile(
   return pathNewFile;
 }
 
-export function deleteFile(filePath: string): Promise<void> {
-  return fs.promises.unlink(filePath);
+export async function deleteFile(filePath: string): Promise<void> {
+  const stats = await fs.promises.stat(filePath);
+  if (stats.isDirectory()) {
+    const contents = await readdir(filePath);
+    console.log('Directory contents before delete:', contents);
+    await fs.promises.rm(filePath, {
+      recursive: true,
+      force: true,
+      retryDelay: 3,
+    });
+  } else {
+    await fs.promises.unlink(filePath);
+  }
 }
 
 export async function openDialog(mainWindow: BrowserWindow) {
